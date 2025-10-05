@@ -1,0 +1,32 @@
+/* Hide the native cursor only on real mouse pointers */
+@media (hover: hover) and (pointer: fine) {
+  html, body { cursor: none; }
+}
+
+/* Red floating dot cursor */
+#cursor-dot {
+  position: fixed;
+  left: 0; top: 0;
+  width: 10px; height: 10px;          /* small circle */
+  background: #ff3b30;                 /* red */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+
+  /* Movement & click animation (scale controlled by --s) */
+  --x: 0; --y: 0; --s: 1;
+  transform: translate(calc(var(--x) * 1px), calc(var(--y) * 1px))
+             translate(-50%, -50%) scale(var(--s));
+  transition: opacity 160ms ease, transform 100ms ease;
+  opacity: 0;
+
+  /* Soft glow – remove if you want it flatter */
+  box-shadow: 0 0 10px rgba(255, 59, 48, 0.35);
+  will-change: transform, opacity;
+}
+
+/* Visible once the mouse is inside the window */
+#cursor-dot.visible { opacity: 1; }
+
+/* Slight shrink on click */
+#cursor-dot.shrink { --s: 0.86; }
