@@ -49,11 +49,20 @@ document.addEventListener('DOMContentLoaded', () => {
     nameEl.appendChild(frag);
   }
 
-  /* ---------- Scroll reveal ---------- */
+  /* ---------- Scroll reveal (sections + staggered children) ---------- */
   const io = new IntersectionObserver(entries => {
-    for (const e of entries) if (e.isIntersecting) e.target.classList.add('is-visible');
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        if (e.target.classList.contains('reveal-stagger')) {
+          [...e.target.children].forEach((child, i) => {
+            child.style.transitionDelay = `${Math.min(i * 80, 480)}ms`;
+          });
+        }
+      }
+    }
   }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
 
   /* ---------- Active left nav on scroll ---------- */
   const navLinks = [...document.querySelectorAll('.side-nav a')];
@@ -70,67 +79,49 @@ document.addEventListener('DOMContentLoaded', () => {
   setActive();
   addEventListener('scroll', setActive, { passive: true });
 
-  /* ---------- Projects unlock + tiles + modal ---------- */
-  const projectsSection = document.getElementById('projects');
-  const unlockBtn = document.getElementById('projects-unlock');
+  /* ---------- Projects tiles + modal ---------- */
   const grid = document.getElementById('projects-grid');
 
-  // Your 5 projects — replace titles/images/descriptions.
   const projects = [
     {
       title: 'fpga pong',
-      desc: 'Hardware game on Cyclone V. Verilog + VGA timing + PS/2.',
-      images: [
-        'assets/projects/fpga-pong/1.jpg',
-        'assets/projects/fpga-pong/2.jpg',
-        'assets/projects/fpga-pong/3.jpg'
-      ],
+      desc: 'Hardware game on Cyclone V. Verilog + VGA timing + PS/2. Lorem ipsum dolor sit amet.',
+      tech: ['Verilog','VGA','PS/2','Cyclone V'],
+      images: ['assets/projects/fpga-pong/1.jpg','assets/projects/fpga-pong/2.jpg','assets/projects/fpga-pong/3.jpg'],
       seed: 'fpga-pong'
     },
     {
       title: 'rfid door',
-      desc: 'ESP32 + RC522, encrypted tags, OTA updates.',
-      images: [
-        'assets/projects/rfid-door/1.jpg',
-        'assets/projects/rfid-door/2.jpg',
-        'assets/projects/rfid-door/3.jpg'
-      ],
+      desc: 'ESP32 + RC522 with encrypted tags and OTA. Lorem ipsum dolor sit amet.',
+      tech: ['ESP32','RC522','OTA','AES'],
+      images: ['assets/projects/rfid-door/1.jpg','assets/projects/rfid-door/2.jpg','assets/projects/rfid-door/3.jpg'],
       seed: 'rfid-door'
     },
     {
       title: 'vision line-follower',
-      desc: 'Jetson Nano robot with OpenCV PID control.',
-      images: [
-        'assets/projects/line-follower/1.jpg',
-        'assets/projects/line-follower/2.jpg',
-        'assets/projects/line-follower/3.jpg'
-      ],
+      desc: 'Jetson Nano robot with OpenCV PID control. Lorem ipsum.',
+      tech: ['Jetson Nano','OpenCV','PID','Python'],
+      images: ['assets/projects/line-follower/1.jpg','assets/projects/line-follower/2.jpg','assets/projects/line-follower/3.jpg'],
       seed: 'line-follower'
     },
     {
       title: 'pcb keyboard',
-      desc: 'Hot-swap 40% with QMK, custom FR4 plate.',
-      images: [
-        'assets/projects/pcb-kb/1.jpg',
-        'assets/projects/pcb-kb/2.jpg',
-        'assets/projects/pcb-kb/3.jpg'
-      ],
+      desc: 'Custom 40% with QMK, hot-swap sockets. Lorem ipsum dolor sit amet.',
+      tech: ['KiCad','QMK','STM32','Hotswap'],
+      images: ['assets/projects/pcb-kb/1.jpg','assets/projects/pcb-kb/2.jpg','assets/projects/pcb-kb/3.jpg'],
       seed: 'pcb-kb'
     },
     {
       title: 'audio dsp',
-      desc: 'Real-time EQ and reverb on STM32 + I2S codec.',
-      images: [
-        'assets/projects/audio-dsp/1.jpg',
-        'assets/projects/audio-dsp/2.jpg',
-        'assets/projects/audio-dsp/3.jpg'
-      ],
+      desc: 'Real-time EQ + reverb on STM32 + I2S codec. Lorem ipsum.',
+      tech: ['STM32','I2S','DSP','C'],
+      images: ['assets/projects/audio-dsp/1.jpg','assets/projects/audio-dsp/2.jpg','assets/projects/audio-dsp/3.jpg'],
       seed: 'audio-dsp'
     }
   ];
 
-  // If an image is missing locally, fall back to picsum so the demo still works.
-  const withFallback = (url, seed, w = 1200, h = 800) =>
+  // if an image is missing locally, fall back to picsum so UI still works
+  const withFallback = (url, seed, w = 1400, h = 900) =>
     new Promise(resolve => {
       const img = new Image();
       img.onload = () => resolve(url);
@@ -138,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img.src = url;
     });
 
-  // Build grid tiles (hidden until unlocked)
+  // Build grid immediately (no unlock)
   const buildGrid = async () => {
     grid.innerHTML = '';
     for (let i = 0; i < projects.length; i++) {
@@ -147,9 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
       tile.className = 'tile';
       tile.dataset.index = i;
 
-      // Use first image as cover with fallback
-      const coverSrc = await withFallback(p.images[0], p.seed, 1024, 680);
+      // shoot from left/right
+      tile.style.setProperty('--fromX', (i % 2 === 0 ? '-120px' : '120px'));
+      tile.style.transitionDelay = `${i * 70}ms`;
 
+      const coverSrc = await withFallback(p.images[0], p.seed);
       tile.innerHTML = `
         <img src="${coverSrc}" alt="${p.title} cover" loading="lazy">
         <div class="tile-info">
@@ -159,28 +152,22 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       tile.addEventListener('click', () => {
-        if (!tile.classList.contains('revealed')) {
-          tile.classList.add('revealed');              // first click "uncover"
-        } else {
-          openModal(i);                                 // second click enlarge
-        }
+        if (!tile.classList.contains('revealed')) tile.classList.add('revealed'); // first click: reveal
+        else openModal(i); // second click: details
       });
 
       grid.appendChild(tile);
     }
   };
+  buildGrid();
 
-  // Unlock on header click
-  if (unlockBtn && projectsSection && grid) {
-    unlockBtn.addEventListener('click', async () => {
-      projectsSection.classList.add('unlocked');
-      const hint = unlockBtn.querySelector('.hint');
-      if (hint) hint.remove();
-      if (!grid.childElementCount) await buildGrid();
-    });
-  }
+  // When grid scrolls into view, play the shoot-in animation
+  const gridObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+  }, { threshold: 0.15 });
+  gridObserver.observe(grid);
 
-  /* ---------- Modal / Carousel ---------- */
+  /* ---------- Modal / Carousel with integrated right panel ---------- */
   const modal = document.getElementById('project-modal');
   const modalTitle = document.getElementById('modal-title');
   const modalSlides = document.getElementById('modal-slides');
@@ -188,6 +175,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('modal-close');
   const prevBtn = document.getElementById('slide-prev');
   const nextBtn = document.getElementById('slide-next');
+  const asideTitle = document.getElementById('modal-aside-title');
+  const asideText = document.getElementById('modal-aside-text');
+  const asideTags = document.getElementById('modal-aside-tags');
+
   let currentProject = 0, currentSlide = 0;
 
   function openModal(index){
@@ -198,11 +189,13 @@ document.addEventListener('DOMContentLoaded', () => {
     modalTitle.textContent = p.title;
     modalCaption.textContent = p.desc;
 
-    // Clear slides
-    [...modalSlides.querySelectorAll('img')].forEach(el => el.remove());
+    asideTitle.textContent = 'about this project';
+    asideText.textContent = p.desc;
+    asideTags.innerHTML = p.tech.map(t => `<li>${t}</li>`).join('');
 
-    // Create slides (with fallback)
-    Promise.all(p.images.map((src, idx) => withFallback(src, p.seed + '-' + idx)))
+    // build slides
+    [...modalSlides.querySelectorAll('img')].forEach(el => el.remove());
+    Promise.all(p.images.map((src, i) => withFallback(src, p.seed + '-' + i)))
       .then(urls => {
         urls.forEach((url, i) => {
           const img = document.createElement('img');
@@ -232,7 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
     imgs[currentSlide]?.classList.add('active');
   }
 
-  // Modal events
   closeBtn.addEventListener('click', closeModal);
   prevBtn.addEventListener('click', () => go(-1));
   nextBtn.addEventListener('click', () => go(1));

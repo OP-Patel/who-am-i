@@ -11,6 +11,9 @@
 </head>
 <body>
 
+  <!-- Top-left badge -->
+  <div class="corner-badge">looking for 2026 internships: <span>all things electronic</span></div>
+
   <!-- LEFT NAV -->
   <nav class="side-nav">
     <a href="#home">name</a>
@@ -24,27 +27,143 @@
   <section id="home" class="section hero">
     <h1 id="hero-name" class="binary-name underlined reveal" aria-label="om patel">om patel</h1>
     <p class="subtitle reveal delay-1">university of toronto electrical engineering</p>
+
+    <!-- Contact -->
+    <ul class="contact reveal delay-1">
+      <li><a href="tel:+16477633588">647&nbsp;763-3588</a></li>
+      <li><a href="mailto:omprakash.patel@mail.utoronto.ca">omprakash.patel@mail.utoronto.ca</a></li>
+      <li><a href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener">linkedin.com/in/om-patel-op</a></li>
+    </ul>
+
+    <div class="scroll-hint" aria-hidden="true">scroll</div>
   </section>
 
+  <!-- EXPERIENCE -->
   <section id="experience" class="section reveal">
-    <h2 class="section-title underlined">experience</h2>
+    <h2 class="section-title underlined section-heading">experience</h2>
+
+    <div class="xp-stack">
+
+      <!-- 1) FNZ -->
+      <article class="xp-card reveal-stagger">
+        <header class="xp-header">
+          <h3 class="card-title underlined">fnz</h3>
+          <div class="xp-meta">
+            <span class="pill">Toronto, ON</span>
+            <span class="dot">•</span>
+            <span class="pill">term length: 4 months</span>
+          </div>
+        </header>
+
+        <div class="xp-body">
+          <aside class="xp-aside">
+            <h4 class="aside-title">what i used</h4>
+            <ul class="tags">
+              <li>Python</li><li>TypeScript</li><li>React</li><li>PostgreSQL</li><li>AWS</li><li>Git</li>
+            </ul>
+          </aside>
+
+          <div class="xp-main">
+            <h4 class="aside-title">what i did</h4>
+            <ul class="xp-list">
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempus, urna eget efficitur viverra.</li>
+              <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</li>
+              <li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2) Experience slot -->
+      <article class="xp-card reveal-stagger">
+        <header class="xp-header">
+          <h3 class="card-title underlined">next place</h3>
+          <div class="xp-meta">
+            <span class="pill">City, ST</span>
+            <span class="dot">•</span>
+            <span class="pill">term length: 4–8 months</span>
+          </div>
+        </header>
+
+        <div class="xp-body">
+          <aside class="xp-aside">
+            <h4 class="aside-title">what i used</h4>
+            <ul class="tags">
+              <li>Tool A</li><li>Tool B</li><li>Tool C</li>
+            </ul>
+          </aside>
+
+          <div class="xp-main">
+            <h4 class="aside-title">what i did</h4>
+            <ul class="xp-list">
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Praesent commodo, nibh ut bibendum posuere, ante purus varius odio.</li>
+              <li>Cras posuere nisl nec orci tincidunt, nec aliquam tortor convallis.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3) Experience slot -->
+      <article class="xp-card reveal-stagger">
+        <header class="xp-header">
+          <h3 class="card-title underlined">another place</h3>
+          <div class="xp-meta">
+            <span class="pill">Somewhere</span>
+            <span class="dot">•</span>
+            <span class="pill">term length: TBD</span>
+          </div>
+        </header>
+
+        <div class="xp-body">
+          <aside class="xp-aside">
+            <h4 class="aside-title">what i used</h4>
+            <ul class="tags">
+              <li>Tech X</li><li>Tech Y</li><li>Tech Z</li>
+            </ul>
+          </aside>
+
+          <div class="xp-main">
+            <h4 class="aside-title">what i did</h4>
+            <ul class="xp-list">
+              <li>Quisque eleifend sem in maximus dapibus.</li>
+              <li>Donec aliquet tellus at tempus pretium.</li>
+              <li>Aliquam laoreet, magna non pulvinar varius.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
   </section>
 
+  <!-- PROJECTS -->
   <section id="projects" class="section reveal">
-    <h2 class="section-title underlined clickable" id="projects-unlock">
-      projects <span class="hint">(click to unlock)</span>
-    </h2>
-
-    <!-- unlocked by clicking the header -->
+    <h2 class="section-title underlined section-heading">projects</h2>
+    <p class="project-note">tip: click a tile to reveal it — click again for details.</p>
     <div class="projects-grid" id="projects-grid" aria-live="polite"></div>
   </section>
 
+  <!-- ABOUT -->
   <section id="about" class="section reveal">
-    <h2 class="section-title underlined">a little about me</h2>
+    <h2 class="section-title underlined section-heading">a little about me</h2>
+    <article class="longform reveal-stagger">
+      <ul class="about-list">
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id lacus in arcu tempor vehicula vitae ac felis.</li>
+        <li>Quisque eleifend, sem in maximus dapibus, est elit feugiat augue, vitae lobortis mauris est id neque.</li>
+        <li>Donec aliquet, tellus at tempus pretium, augue enim malesuada sapien, sed dictum arcu nisl nec arcu.</li>
+      </ul>
+    </article>
   </section>
 
+  <!-- RESUME -->
   <section id="resume" class="section reveal">
-    <h2 class="section-title underlined">resume</h2>
+    <h2 class="section-title underlined section-heading">resume</h2>
+    <article class="longform reveal-stagger">
+      <p>Aliquam bibendum, neque in laoreet egestas, justo libero interdum turpis, eu posuere sapien nulla at nisl.</p>
+      <p>In hac habitasse platea dictumst. Nunc mattis, nibh sit amet congue tincidunt, nisl arcu blandit odio, vitae posuere est dolor sit amet ligula.</p>
+      <p>Morbi commodo, nibh a pharetra finibus, tortor mauris suscipit sem, non fermentum neque mi sed magna.</p>
+    </article>
   </section>
 
   <!-- Custom Cursor -->
@@ -53,17 +172,30 @@
   <!-- Project Modal -->
   <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-card">
+
       <header class="modal-header">
         <h3 id="modal-title"></h3>
         <button class="icon-btn" id="modal-close" aria-label="Close">✕</button>
       </header>
-      <div class="slides" id="modal-slides">
-        <button class="icon-btn prev" id="slide-prev" aria-label="Previous">‹</button>
-        <button class="icon-btn next" id="slide-next" aria-label="Next">›</button>
+
+      <!-- BODY: slides + right details panel (integrated) -->
+      <div class="modal-body">
+        <div class="slides" id="modal-slides">
+          <button class="icon-btn prev" id="slide-prev" aria-label="Previous">‹</button>
+          <button class="icon-btn next" id="slide-next" aria-label="Next">›</button>
+        </div>
+
+        <aside class="modal-aside" id="modal-aside">
+          <h4 id="modal-aside-title"></h4>
+          <p id="modal-aside-text"></p>
+          <ul class="tags" id="modal-aside-tags"></ul>
+        </aside>
       </div>
+
       <footer class="modal-footer">
         <p id="modal-caption"></p>
       </footer>
+
     </div>
   </div>
 
