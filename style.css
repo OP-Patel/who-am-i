@@ -1,49 +1,12 @@
-/* Hide the native cursor only on real mouse pointers */
-@media (hover: hover) and (pointer: fine) {
-  html, body { cursor: none; }
-}
-
-/* Red floating dot cursor */
-#cursor-dot {
-  position: fixed;
-  left: 0; top: 0;
-  width: 10px; height: 10px;          /* small circle */
-  background: #c385dda9;                 /* red */
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-
-  /* Movement & click animation (scale controlled by --s) */
-  --x: 0; --y: 0; --s: 1;
-  transform: translate(calc(var(--x) * 1px), calc(var(--y) * 1px))
-             translate(-50%, -50%) scale(var(--s));
-  transition: opacity 160ms ease, transform 100ms ease;
-  opacity: 0;
-
-  /* Soft glow – remove if you want it flatter */
-  box-shadow: 0 0 10px rgba(255, 59, 48, 0.35);
-  will-change: transform, opacity;
-}
-
-/* Visible once the mouse is inside the window */
-#cursor-dot.visible { opacity: 1; }
-
-/* Slight shrink on click */
-#cursor-dot.shrink { --s: 0.86; }
-
-
-
-/* JetBrains Mono Variable — normal */
+/* ---------- THEME ---------- */
 @font-face {
   font-family: "JetBrains Mono";
   src: url("fonts/JetBrainsMono[wght].woff2") format("woff2-variations"),
        url("fonts/JetBrainsMono[wght].ttf") format("truetype-variations");
-  font-weight: 100 800;   /* Thin → ExtraBold */
+  font-weight: 100 800;
   font-style: normal;
   font-display: swap;
 }
-
-/* JetBrains Mono Variable — italic */
 @font-face {
   font-family: "JetBrains Mono";
   src: url("fonts/JetBrainsMono-Italic[wght].woff2") format("woff2-variations"),
@@ -53,10 +16,120 @@
   font-display: swap;
 }
 
-
-html {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  font-weight: 400;        /* variable weight controlled via regular CSS */
+:root{
+  --bg:#0b0d10;
+  --fg:#e5e7eb;
+  --muted:#94a3b8;
+  --accent:#ff3b30;     /* also used for cursor + carets */
+  --soft:#1a1f29;
 }
-h1, h2 { font-weight: 700; }
-em { font-style: italic; }
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* Hide the native cursor only on real mouse pointers */
+@media (hover: hover) and (pointer: fine) { html, body { cursor: none; } }
+
+/* ---------- CUSTOM CURSOR ---------- */
+#cursor-dot{
+  position:fixed; left:0; top:0;
+  width:10px; height:10px;
+  background:var(--accent);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  --x:0; --y:0; --s:1;
+  transform:translate(calc(var(--x)*1px), calc(var(--y)*1px)) translate(-50%, -50%) scale(var(--s));
+  transition:opacity 160ms ease, transform 100ms ease;
+  opacity:0;
+  box-shadow:0 0 12px rgba(255,59,48,.35);
+  will-change:transform,opacity;
+}
+#cursor-dot.visible{opacity:1}
+#cursor-dot.shrink{--s:.86}
+
+/* ---------- LAYOUT ---------- */
+.section{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:0 8vw;
+  position:relative;
+}
+.section h2{
+  margin:0;
+  font-weight:700;
+  letter-spacing:.02em;
+  color:var(--muted);
+}
+
+/* Left nav */
+.side-nav{
+  position:fixed;
+  inset:auto auto 0 24px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:.35rem;
+  z-index:10;
+}
+.side-nav a{
+  color:#9aa4b1;
+  text-decoration:none;
+  font-size:.95rem;
+  opacity:.8;
+  transition:opacity .15s ease, transform .15s ease;
+  padding:.1rem 0;
+}
+.side-nav a::before{
+  content: "> ";
+  color:var(--accent);
+}
+.side-nav a:hover{ opacity:1; transform:translateX(4px); }
+.side-nav a.active{ color:var(--fg); opacity:1; }
+
+/* Hero */
+.hero{
+  text-align:center;
+}
+.binary-name{
+  margin:0;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:.04em;
+  /* responsive size: scales between 36px and 120px */
+  font-size:clamp(2.25rem, 10vw, 7.5rem);
+}
+.binary-name .char{
+  display:inline-block;
+  transition:transform .18s ease, color .18s ease, opacity .18s ease;
+}
+.subtitle{
+  margin-top:1rem;
+  color:var(--muted);
+  font-size:clamp(.8rem, 1.6vw, 1rem);
+}
+
+/* Scroll reveal */
+.reveal{ opacity:0; transform:translateY(8px); }
+.reveal.is-visible{ opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease; }
+.reveal.delay-1{ transition-delay:.1s; }
+
+/* Small screens: tuck the side nav to the top-left */
+@media (max-width: 720px){
+  .side-nav{
+    top:24px;
+    transform:none;
+  }
+}

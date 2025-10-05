@@ -4,20 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Om Patel</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fonts -->
   <link rel="preload" as="font" href="/fonts/JetBrainsMono[wght].woff2" type="font/woff2" crossorigin>
-  
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <main class="container">
-    <div>
-        <h1>om patel</h1>
-        <p>on the search for more</p>   
-    </div>
+  <!-- LEFT NAV -->
+  <nav class="side-nav">
+    <a href="#home">name</a>
+    <a href="#experience">experience</a>
+    <a href="#projects">projects</a>
+    <a href="#about">a little about me</a>
+    <a href="#resume">resume</a>
+  </nav>
 
+  <!-- HERO / LANDING -->
+  <section id="home" class="section hero">
+    <h1 id="hero-name" class="binary-name reveal" aria-label="om patel">om patel</h1>
+    <p class="subtitle reveal delay-1">university of toronto electrical engineering</p>
+  </section>
 
-  </main>
+  <!-- Dummy sections so the nav has somewhere to go (fill later) -->
+  <section id="experience" class="section reveal"><h2>experience</h2></section>
+  <section id="projects" class="section reveal"><h2>projects</h2></section>
+  <section id="about" class="section reveal"><h2>a little about me</h2></section>
+  <section id="resume" class="section reveal"><h2>resume</h2></section>
 
   <!-- Custom Cursor -->
   <div id="cursor-dot" aria-hidden="true"></div>
