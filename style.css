@@ -320,3 +320,14 @@ body{
 .slides .icon-btn.next{
   transform: translateY(-50%);
 }
+
+/* GitHub link button in the details panel */
+.gh-link{
+  display:inline-flex; align-items:center; gap:.4rem;
+  text-decoration:none; color:#e5e7eb;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:10px; padding:.35rem .6rem;
+  transition:background .15s ease, transform .15s ease, border-color .15s ease;
+}
+.gh-link:hover{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.28); transform:translateY(-1px) }
+.gh-link.mt{ margin-top:.8rem }
