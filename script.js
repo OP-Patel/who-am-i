@@ -142,12 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn       = qs('#slide-next');
     const detailList    = qs('#modal-detail-list');
     const asideTags     = qs('#modal-aside-tags');
-    const modalGithub   = qs('#modal-github'); // optional, only if you added it
+    const modalGithub   = qs('#modal-github'); 
 
     // Data
     const projects = [
       {
-        title: 'class e power amplifier and filter PCB',
+        title: 'PCB: class e power amplifier and filter',
         snippet: '16 MHz Class-E PA + 7-stage filter for radio integration',
         details: [
           'constructed a Class-E PA and maximally-flat 7-stage low-pass filter',
@@ -161,20 +161,21 @@ document.addEventListener('DOMContentLoaded', () => {
         seed: 'class-e-pa'
       },
       {
-        title: 'rfid door',
-        snippet: 'ESP32 + RC522 access control with OTA.',
+        title: 'FPGA: human benchmark clone',
+        snippet: 'DE1-SoC FPGA (with RISCV structure) programmed with Embedded C to recreate Human Benchmark Memory Game',
         details: [
-          'encrypted tag authentication and role-based access',
-          'OTA updates for field devices; metrics via MQTT',
-          '3D-printed mount + wiring harness for neat install'
+          'de1-soc fpga programmed in embedded c to control VGA display, audio and PS/2 keyboard',
+          'three levels of difficulty, scaling grid size and locations to memorize',
+          'managed vsync, audio, and memory operations with double/single buffering',
         ],
-        tech: ['ESP32','RC522','OTA','AES'],
-        images: ['assets/projects/rfid-door/1.jpg','assets/projects/rfid-door/2.jpg','assets/projects/rfid-door/3.jpg'],
-        seed: 'rfid-door'
+        tech: ['DE1-SoC FPGA','RISC V','Embedded C','VGA Display', 'PS/2 Keyboard', 'Audio-Synthesis'],
+        images: ['statics/memorygame/progression.png', 'statics/memorygame/guessingsquares.png', 'statics/memorygame/blockdiagram.png','statics/memorygame/difficulty.png', 'statics/memorygame/squaresshown.png','statics/memorygame/gameover.png'],
+        github: 'https://github.com/OP-Patel/human-benchmark',
+        seed: 'fpga-memory-game'
       },
       {
-        title: 'vision line-follower',
-        snippet: 'Jetson Nano robot with OpenCV PID.',
+        title: 'MakeUofT2025 - hackathon 2x Winner B.O.B',
+        snippet: 'Arduino/Python: automonomous recycling bin that opens when a recyclable item barcode is scanned',
         details: [
           'camera-based line detection and curvature estimation',
           'PID speed/steering loop with auto-tuned gains',
@@ -182,7 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         tech: ['Jetson Nano','OpenCV','PID','Python'],
         images: ['assets/projects/line-follower/1.jpg','assets/projects/line-follower/2.jpg','assets/projects/line-follower/3.jpg'],
-        seed: 'line-follower'
+        github: 'https://devpost.com/software/battle-over-bins',
+        seed: 'makeuoft-2025'
       },
       {
         title: 'pcb keyboard',
