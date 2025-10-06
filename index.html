@@ -43,7 +43,6 @@
     <h2 class="section-title underlined section-heading">experience (in brief)</h2>
 
     <div class="xp-stack">
-
       <!-- 1) FNZ -->
       <article class="xp-card reveal-stagger">
         <header class="xp-header">
@@ -54,19 +53,18 @@
             <span class="pill">term length: 4 months</span>
           </div>
         </header>
-
         <div class="xp-body">
           <aside class="xp-aside">
             <h4 class="aside-title">skills</h4>
             <ul class="tags">
-              <li>SQL</li><li>JavaScript</li><li>Postman</li><li>Virtuoso QA</li><li>RabbitMQ</li><li>JIRA</li><li>Automated Testing</li><li>Solution Design</li>
+              <li>SQL</li><li>JavaScript</li><li>Postman</li><li>Virtuoso QA</li>
+              <li>RabbitMQ</li><li>JIRA</li><li>Automated Testing</li><li>Solution Design</li>
             </ul>
           </aside>
-
           <div class="xp-main">
             <h4 class="aside-title">what i did</h4>
             <ul class="xp-list">
-              <li>raise platform defects (root cause analysis) and test dev fixes </li>
+              <li>raise platform defects (root cause analysis) and test dev fixes</li>
               <li>debugged, maintained and created new automated test cases/plans</li>
               <li>executed 3x/weekly regression and integration platform tests</li>
               <li>solution design for etf/mutual fund mapping from datafeed->DB</li>
@@ -85,7 +83,6 @@
             <span class="pill">term length: 4 months</span>
           </div>
         </header>
-
         <div class="xp-body">
           <aside class="xp-aside">
             <h4 class="aside-title">skills</h4>
@@ -93,7 +90,6 @@
               <li>Excel</li><li>Data Analysis</li><li>Presentations</li><li>Report Writing</li>
             </ul>
           </aside>
-
           <div class="xp-main">
             <h4 class="aside-title">what i did</h4>
             <ul class="xp-list">
@@ -116,7 +112,6 @@
             <span class="pill">term length: 4 months</span>
           </div>
         </header>
-
         <div class="xp-body">
           <aside class="xp-aside">
             <h4 class="aside-title">skills</h4>
@@ -124,25 +119,23 @@
               <li>Web Development</li><li>Leadership</li><li>Report Writing</li><li>Solution Design</li>
             </ul>
           </aside>
-
           <div class="xp-main">
             <h4 class="aside-title">what i did</h4>
             <ul class="xp-list">
               <li>led a team of engineers to solve a client-based problem</li>
-              <li>prototypes a web-application from figma->html/css/js</li>
+              <li>prototyped a web-app from figma→html/css/js</li>
               <li>presented design reviews and benchmarking results to client</li>
             </ul>
           </div>
         </div>
       </article>
-
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects" class="section reveal">
     <h2 class="section-title underlined section-heading">projects</h2>
-    <p class="project-note">tip: click a tile to reveal it — click again for details.</p>
+    <p class="project-note">hover to focus, click a tile for details.</p>
     <div class="projects-grid" id="projects-grid" aria-live="polite"></div>
   </section>
 
@@ -151,10 +144,10 @@
     <h2 class="section-title underlined section-heading">about me</h2>
     <article class="longform reveal-stagger">
       <ul class="about-list">
-        <li>third year electrical engineering student (focusing on analog and digital electronics + computer hardware)</li>
-        <li>extremely motivated to make an impact, i love an environment where there is no end to work and always more to chase</li>
-        <li>looking specifically for roles with high exposure to chip/board design, prototyping and lab environments</li>
-        <li>open for 12-16 months, but also shorter terms and open to relocation</li>
+        <li><span class="emoji">🎓</span>third year electrical engineering student (focusing on analog and digital electronics + computer hardware)</li>
+        <li><span class="emoji">🚀</span>extremely motivated to make an impact; i love an environment where there is no end to work and always more to chase</li>
+        <li><span class="emoji">🛠️</span>looking specifically for roles with high exposure to chip/board design, prototyping and lab environments</li>
+        <li><span class="emoji">📅</span>open for 12–16 months, but also shorter terms and open to relocation</li>
       </ul>
     </article>
   </section>
@@ -175,9 +168,11 @@
   <!-- Project Modal -->
   <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-card">
-
       <header class="modal-header">
-        <h3 id="modal-title"></h3>
+        <div class="modal-header-text">
+          <h3 id="modal-title"></h3>
+          <p id="modal-snippet" class="modal-snippet"></p>
+        </div>
         <button class="icon-btn" id="modal-close" aria-label="Close">✕</button>
       </header>
 
@@ -189,8 +184,10 @@
         </div>
 
         <aside class="modal-aside" id="modal-aside">
-          <h4 id="modal-aside-title"></h4>
-          <p id="modal-aside-text"></p>
+          <h4>details</h4>
+          <ul class="detail-list" id="modal-detail-list"></ul>
+
+          <h4 class="mt">tech</h4>
           <ul class="tags" id="modal-aside-tags"></ul>
         </aside>
       </div>
@@ -198,7 +195,6 @@
       <footer class="modal-footer">
         <p id="modal-caption"></p>
       </footer>
-
     </div>
   </div>
 

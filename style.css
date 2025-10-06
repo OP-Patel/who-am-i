@@ -70,9 +70,7 @@ body{
   padding:0 8vw;
   position:relative;
 }
-.section-heading{
-  margin-bottom:1.2rem;
-}
+.section-heading{ margin-bottom:1.2rem; }
 .section h2{ letter-spacing:.02em; color:var(--fg) }
 
 /* Left nav */
@@ -116,8 +114,7 @@ body{
 .underlined::after{
   content:""; position:absolute; left:0; right:0; bottom:-0.25em; height:2px;
   background: var(--accent);
-  transform-origin:left;
-  transform:scaleX(.2);
+  transform-origin:left; transform:scaleX(.2);
   transition: transform .35s cubic-bezier(.22,1,.36,1), filter .35s;
   filter: drop-shadow(0 0 8px rgba(255,59,48,.4));
 }
@@ -128,35 +125,23 @@ body{
 .reveal{ opacity:0; transform:translateY(8px) }
 .reveal.is-visible{ opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease }
 .reveal.delay-1{ transition-delay:.1s }
-
-/* Reveal children with stagger */
-.reveal-stagger > *{
-  opacity:0; transform:translateY(6px);
-  transition:opacity .5s ease, transform .5s ease;
-}
+.reveal-stagger > *{ opacity:0; transform:translateY(6px); transition:opacity .5s ease, transform .5s ease }
 .reveal-stagger.is-visible > *{ opacity:1; transform:none }
+
 .longform{ width:min(820px, 92vw); line-height:1.6 }
 .longform p{ color:var(--fg); margin:0 0 1rem }
 
-/* About bullets with red markers */
+/* About bullets (red markers + optional emoji before text) */
 .about-list{ margin:0; padding-left:1.25rem }
 .about-list li{ margin:.5rem 0 }
 .about-list li::marker{ color: var(--accent) }
+.about-list .emoji{ margin-right:.4rem; font-size:1.1em; line-height:0; vertical-align:-0.05em }
 
 /* ---------- EXPERIENCE ---------- */
 .xp-stack{ display:grid; gap:18px; width:min(1000px, 92vw) }
-
-.xp-card{
-  background:var(--soft);
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:16px;
-  padding:18px 18px 6px;
-}
+.xp-card{ background:var(--soft); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:18px 18px 6px }
 .card-title{ margin:0; font-size:1.4rem }
-.xp-header{
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
-  border-bottom:1px solid rgba(255,255,255,.06); padding-bottom:10px; margin-bottom:12px;
-}
+.xp-header{ display:flex; align-items:center; justify-content:space-between; gap:16px; border-bottom:1px solid rgba(255,255,255,.06); padding-bottom:10px; margin-bottom:12px }
 .xp-meta{ color:var(--muted); font-size:.9rem; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap }
 .pill{ background:rgba(255,255,255,.06); padding:.2rem .5rem; border-radius:999px }
 .xp-body{ display:grid; grid-template-columns: 1fr 2fr; gap:18px }
@@ -170,79 +155,103 @@ body{
 #projects{ text-align:center }
 .project-note{ margin:.2rem 0 .4rem; color:var(--muted); font-size:.85rem }
 
-/* Grid bigger and with shoot-in animation */
+/* Bigger grid + shoot-in stays the same */
 .projects-grid{
-  width:min(1200px, 92vw);
+  width:min(1300px, 92vw);
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-  gap:18px;
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:20px;
+  position: relative; /* create a containing context for raised tiles */
 }
+
+/* Dim all others when the grid is hovered (desktop only) */
+@media (hover:hover) and (pointer:fine){
+  .projects-grid:hover .tile:not(:hover){
+    opacity:.28;
+    filter: grayscale(.25) saturate(.8) blur(.3px);
+    transform: translateY(0) scale(.98); /* subtle shrink for non-hovered */
+  }
+}
+
 .tile{
-  position:relative; overflow:hidden; border-radius:14px;
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;
   background:var(--soft);
   border:1px solid rgba(255,255,255,.06);
   cursor:pointer;
 
-  /* animation start state */
-  opacity:0; transform:translateX(var(--fromX, 0)) scale(.98); filter:blur(2px);
-}
-.projects-grid.is-visible .tile{
-  opacity:1; transform:none; filter:blur(0);
-  transition:transform .7s cubic-bezier(.22,1,.36,1), opacity .6s ease, filter .6s ease;
-}
-.tile img{
-  width:100%; height:220px; object-fit:cover; display:block;
-  filter:grayscale(.05) contrast(1.05);
-  transition:transform .4s ease;
-}
-.tile:hover img{ transform:scale(1.04) }
-.tile .tile-info{ padding:12px 14px; text-align:left }
-.tile .title{ margin:0; font-size:1rem }
-.tile .desc{ margin:.3rem 0 0; color:var(--muted); font-size:.85rem }
+  /* enter animation (shoot-in) */
+  opacity:0;
+  transform:translateX(var(--fromX, 0)) scale(.98);
+  filter:blur(2px);
 
-/* “Uncover” veil */
-.tile::before{
-  content:"click to reveal";
-  position:absolute; inset:0; display:grid; place-items:center;
-  background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.6));
-  color:var(--fg); letter-spacing:.08em; font-size:.8rem;
-  opacity:.95; clip-path:inset(0% 0% 0% 0% round 12px);
-  transition:opacity .35s ease, clip-path .6s cubic-bezier(.22,1,.36,1);
+  /* transitions (also used for hover) */
+  transition:
+    transform .22s cubic-bezier(.22,1,.36,1),
+    opacity .25s ease,
+    filter .25s ease,
+    box-shadow .22s ease;
+  will-change: transform;
 }
-.tile.revealed::before{ opacity:0; clip-path:inset(100% 0% 0% 0% round 12px); pointer-events:none }
+
+/* when grid becomes visible, play the shoot-in */
+.projects-grid.is-visible .tile{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+}
+
+/* Hover/focus: lift it above neighbors */
+.tile:hover,
+.tile:focus,
+.tile:focus-within{
+  transform: translateY(-8px) scale(1.05);
+  z-index: 5; /* sit on top of adjacent tiles */
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.45),
+    0 0 0 1px rgba(255,255,255,.08) inset;
+}
+
+/* Image + text (unchanged except for slightly taller image) */
+.tile img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+  display:block;
+  filter:grayscale(.05) contrast(1.05);
+  transition:transform .28s ease;
+}
+.tile:hover img{ transform:scale(1.03) }
+
+.tile .tile-info{ padding:12px 14px; text-align:left }
+.tile .title{ margin:0; font-size:1.05rem }
+.tile .desc{ margin:.25rem 0 0; color:var(--muted); font-size:.88rem }
+
 
 /* ---------- MODAL ---------- */
 .modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center;
   background:rgba(8,10,12,.75); backdrop-filter:blur(6px); z-index:10000; padding:32px }
 .modal.open{ display:flex }
-
 .modal-card{
   width:min(1200px, 96vw); max-height:86vh; display:grid; grid-template-rows:auto minmax(0,1fr) auto;
   background:#0e1319; border:1px solid rgba(255,255,255,.08); border-radius:16px; overflow:hidden;
-  transform: translateY(8px) scale(.98);
-  opacity:0;
+  transform: translateY(8px) scale(.98); opacity:0;
   transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .35s ease;
 }
 .modal.open .modal-card{ transform:none; opacity:1 }
 
-.modal-header, .modal-footer{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:12px 16px; border-bottom:1px solid rgba(255,255,255,.06)
-}
+.modal-header, .modal-footer{ display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,.06) }
 .modal-footer{ border-top:1px solid rgba(255,255,255,.06); border-bottom:none }
+.modal-header-text{ display:flex; flex-direction:column; gap:.25rem }
 .modal-header h3{ margin:0; font-size:1.05rem }
+.modal-snippet{ margin:0; color:#9fb0c0; font-size:.9rem }
 
-.modal-body{
-  display:grid; grid-template-columns: minmax(0,1fr) var(--asideW);
-  min-height:0; height:min(600px, 66vh);
-}
+.modal-body{ display:grid; grid-template-columns: minmax(0,1fr) var(--asideW); min-height:0; height:min(600px, 66vh) }
 
 /* slides */
 .slides{ position:relative; background:#000; overflow:hidden }
-.slides img{
-  position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
-  opacity:0; transition:opacity .35s ease
-}
+.slides img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; transition:opacity .35s ease }
 .slides img.active{ opacity:1 }
 
 .icon-btn{
@@ -251,28 +260,63 @@ body{
   transition:background .15s ease, transform .15s ease, border-color .15s ease;
 }
 .icon-btn:hover{ background:rgba(255,255,255,.06); transform:translateY(-1px) }
-.icon-btn.prev, .icon-btn.next{
-  position:absolute; top:50%; transform:translateY(-50%); z-index:3;
-}
+.icon-btn.prev, .icon-btn.next{ position:absolute; top:50%; transform:translateY(-50%); z-index:3 }
 .icon-btn.prev{ left:10px } .icon-btn.next{ right:10px }
 
 .modal-footer p{ margin:.25rem 0 0; color:var(--muted); font-size:.95rem }
 
-/* right details panel (integrated with album area) */
+/* right details panel */
 .modal-aside{
-  background:rgba(20,24,32,.96);
-  border-left:1px solid rgba(255,255,255,.08);
+  background:rgba(20,24,32,.96); border-left:1px solid rgba(255,255,255,.08);
   padding:16px; overflow:auto;
   transform: translateX(16px); opacity:0;
   transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .35s ease;
 }
 .modal.open .modal-aside{ transform:none; opacity:1 }
 .modal-aside h4{ margin:.2rem 0 .6rem; font-size:1rem }
-.modal-aside p{ margin:.25rem 0 1rem; color:#c8d0d9 }
 .modal-aside .tags{ margin-top:.4rem }
+.mt{ margin-top:1rem }
+
+/* project details list — same red markers as About */
+.detail-list{ margin:0 0 1rem 1.25rem; padding:0 }
+.detail-list li{ margin:.35rem 0; color:#c8d0d9 }
+.detail-list li::marker{ color: var(--accent) }
 
 /* Small screens */
 @media (max-width: 720px){
   .side-nav{ top:24px; left:16px; transform:none }
   :root{ --asideW: 300px }
+}
+
+/* --- Carousel arrows: red style --- */
+.slides .icon-btn{
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;                 /* the ‹ › symbols */
+  border-radius: 999px;
+  background: var(--accent);       /* red */
+  border-color: var(--accent);
+  color: #fff;                     /* white chevron on red */
+  box-shadow: 0 6px 16px rgba(0,0,0,.35), 0 0 0 2px rgba(255,59,48,.28);
+  opacity: .95;
+}
+
+.slides .icon-btn:hover{
+  background: var(--accent);
+  border-color: var(--accent);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.08);  /* keep centered while enlarging */
+}
+
+.slides .icon-btn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,59,48,.45), 0 6px 16px rgba(0,0,0,.35);
+}
+
+/* ensure the base hover translate from generic .icon-btn doesn't nudge these */
+.slides .icon-btn.prev,
+.slides .icon-btn.next{
+  transform: translateY(-50%);
 }

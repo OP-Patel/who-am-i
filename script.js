@@ -82,45 +82,71 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Projects tiles + modal ---------- */
   const grid = document.getElementById('projects-grid');
 
+  // Each project: title, snippet (one-liner), details (bullets), tech, images
   const projects = [
     {
-      title: 'fpga pong',
-      desc: 'Hardware game on Cyclone V. Verilog + VGA timing + PS/2. Lorem ipsum dolor sit amet.',
-      tech: ['Verilog','VGA','PS/2','Cyclone V'],
+      title: 'class e power amplifier and filter PCB',
+      snippet: '16 MHz Class-E PA + 7-stage LPF for radio integration.',
+      details: [
+        'constructed a Class-E PA and maximally-flat 7-stage low-pass filter',
+        'achieved 2.7 W across antenna load (~30 dB gain) with 1.69% THD',
+        'validated on spectrum analyzer and DMM; met radio integration requirements'
+      ],
+      tech: ['RF','Class-E','Filter Design','Measurements'],
       images: ['assets/projects/fpga-pong/1.jpg','assets/projects/fpga-pong/2.jpg','assets/projects/fpga-pong/3.jpg'],
-      seed: 'fpga-pong'
+      seed: 'class-e-pa'
     },
     {
       title: 'rfid door',
-      desc: 'ESP32 + RC522 with encrypted tags and OTA. Lorem ipsum dolor sit amet.',
+      snippet: 'ESP32 + RC522 access control with OTA.',
+      details: [
+        'encrypted tag authentication and role-based access',
+        'OTA updates for field devices; metrics via MQTT',
+        '3D-printed mount + wiring harness for neat install'
+      ],
       tech: ['ESP32','RC522','OTA','AES'],
       images: ['assets/projects/rfid-door/1.jpg','assets/projects/rfid-door/2.jpg','assets/projects/rfid-door/3.jpg'],
       seed: 'rfid-door'
     },
     {
       title: 'vision line-follower',
-      desc: 'Jetson Nano robot with OpenCV PID control. Lorem ipsum.',
+      snippet: 'Jetson Nano robot with OpenCV PID.',
+      details: [
+        'camera-based line detection and curvature estimation',
+        'PID speed/steering loop with auto-tuned gains',
+        'telemetry dashboard for lap timing and plots'
+      ],
       tech: ['Jetson Nano','OpenCV','PID','Python'],
       images: ['assets/projects/line-follower/1.jpg','assets/projects/line-follower/2.jpg','assets/projects/line-follower/3.jpg'],
       seed: 'line-follower'
     },
     {
       title: 'pcb keyboard',
-      desc: 'Custom 40% with QMK, hot-swap sockets. Lorem ipsum dolor sit amet.',
+      snippet: 'Custom 40% hot-swap board with QMK.',
+      details: [
+        'KiCad schematic/PCB; FR4 plate and USB-C ESD protection',
+        'per-key RGB and underglow; VIA-configurable keymap',
+        'case CNC’d from acrylic; gasket-mounted'
+      ],
       tech: ['KiCad','QMK','STM32','Hotswap'],
       images: ['assets/projects/pcb-kb/1.jpg','assets/projects/pcb-kb/2.jpg','assets/projects/pcb-kb/3.jpg'],
       seed: 'pcb-kb'
     },
     {
       title: 'audio dsp',
-      desc: 'Real-time EQ + reverb on STM32 + I2S codec. Lorem ipsum.',
+      snippet: 'STM32 real-time EQ + reverb over I2S.',
+      details: [
+        'biquad EQ bank and Schroeder reverb at 48 kHz',
+        'fixed-point optimizations; double-buffered DMA',
+        'headphone amp stage with pop suppression'
+      ],
       tech: ['STM32','I2S','DSP','C'],
       images: ['assets/projects/audio-dsp/1.jpg','assets/projects/audio-dsp/2.jpg','assets/projects/audio-dsp/3.jpg'],
       seed: 'audio-dsp'
     }
   ];
 
-  // if an image is missing locally, fall back to picsum so UI still works
+  // Fallback if images are missing locally
   const withFallback = (url, seed, w = 1400, h = 900) =>
     new Promise(resolve => {
       const img = new Image();
@@ -129,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img.src = url;
     });
 
-  // Build grid immediately (no unlock)
+  // Build grid (no reveal step)
   const buildGrid = async () => {
     grid.innerHTML = '';
     for (let i = 0; i < projects.length; i++) {
@@ -138,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tile.className = 'tile';
       tile.dataset.index = i;
 
-      // shoot from left/right
+      // shoot-in from left/right
       tile.style.setProperty('--fromX', (i % 2 === 0 ? '-120px' : '120px'));
       tile.style.transitionDelay = `${i * 70}ms`;
 
@@ -147,15 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="${coverSrc}" alt="${p.title} cover" loading="lazy">
         <div class="tile-info">
           <h3 class="title">${p.title}</h3>
-          <p class="desc">${p.desc}</p>
+          <p class="desc">${p.snippet}</p>
         </div>
       `;
 
-      tile.addEventListener('click', () => {
-        if (!tile.classList.contains('revealed')) tile.classList.add('revealed'); // first click: reveal
-        else openModal(i); // second click: details
-      });
-
+      tile.addEventListener('click', () => openModal(i));
       grid.appendChild(tile);
     }
   };
@@ -170,13 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Modal / Carousel with integrated right panel ---------- */
   const modal = document.getElementById('project-modal');
   const modalTitle = document.getElementById('modal-title');
+  const modalSnippet = document.getElementById('modal-snippet');
   const modalSlides = document.getElementById('modal-slides');
   const modalCaption = document.getElementById('modal-caption');
   const closeBtn = document.getElementById('modal-close');
   const prevBtn = document.getElementById('slide-prev');
   const nextBtn = document.getElementById('slide-next');
-  const asideTitle = document.getElementById('modal-aside-title');
-  const asideText = document.getElementById('modal-aside-text');
+
+  const detailList = document.getElementById('modal-detail-list');
   const asideTags = document.getElementById('modal-aside-tags');
 
   let currentProject = 0, currentSlide = 0;
@@ -187,10 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const p = projects[index];
     modalTitle.textContent = p.title;
-    modalCaption.textContent = p.desc;
+    modalSnippet.textContent = p.snippet;
+    modalCaption.textContent = ''; // optional footer line
 
-    asideTitle.textContent = 'about this project';
-    asideText.textContent = p.desc;
+    // build detail bullets (same red markers as About)
+    detailList.innerHTML = p.details.map(d => `<li>${d}</li>`).join('');
     asideTags.innerHTML = p.tech.map(t => `<li>${t}</li>`).join('');
 
     // build slides
