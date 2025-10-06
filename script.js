@@ -333,3 +333,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 });
+
+/* =========================
+ * Resume: image preview + open/download links
+ * =======================*/
+(function initResume(){
+  const RESUME = {
+    pdf: 'statics/resume/Om-Patel-Resume.pdf', // ← update if you use different names/paths
+    img: 'statics/resume/Om-Patel-Resume.png'
+  };
+
+  const imgEl       = document.querySelector('#resume-img');
+  const viewBtn     = document.querySelector('#resume-view');
+  const downloadBtn = document.querySelector('#resume-download');
+
+  if (!imgEl || !viewBtn || !downloadBtn) return;
+
+  // Set URLs
+  viewBtn.href = RESUME.pdf;
+  downloadBtn.href = RESUME.pdf;
+  downloadBtn.setAttribute('download', RESUME.pdf.split('/').pop() || 'resume.pdf');
+
+  // Load preview image; hide frame if it fails (e.g., you only uploaded a PDF)
+  imgEl.src = RESUME.img;
+  imgEl.addEventListener('error', () => {
+    const frame = imgEl.closest('.resume-frame');
+    if (frame) frame.classList.add('hide');
+  });
+})();
