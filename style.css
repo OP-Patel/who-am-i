@@ -51,7 +51,7 @@ body{
 /* ---------- CUSTOM CURSOR (very top) ---------- */
 #cursor-dot{
   position:fixed; left:0; top:0;
-  width:10px; height:10px; background:var(--accent);
+  width:15px; height:15px; background:var(--accent);
   border-radius:50%; pointer-events:none; z-index:2147483647;
   --x:0; --y:0; --s:1;
   transform:translate(calc(var(--x)*1px), calc(var(--y)*1px)) translate(-50%,-50%) scale(var(--s));
