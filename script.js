@@ -158,57 +158,70 @@ document.addEventListener('DOMContentLoaded', () => {
         tech: ['Altium Designer','LTSpice','Lab Equipment','Python Scripting', 'Rapid Prototyping', 'Soldering', 'PCB Design', 'Circuit Design'],
         images: ['/statics/pa-lpf/pcb_final.png','statics/pa-lpf/final_circuit.png','statics/pa-lpf/final_results.png','statics/pa-lpf/breadboard.png', 'statics/pa-lpf/assembled.png', 'statics/pa-lpf/simulations.png'],
         github: 'https://github.com/OP-Patel/pa-lpf-pcb',
-        seed: 'class-e-pa'
+        seed: 'pa-lpf-pcb'
       },
       {
         title: 'FPGA: human benchmark clone',
         snippet: 'DE1-SoC FPGA (with RISCV structure) programmed with Embedded C to recreate Human Benchmark Memory Game',
         details: [
-          'de1-soc fpga programmed in embedded c to control VGA display, audio and PS/2 keyboard',
+          'DE1-SoC fpga programmed in embedded c to control VGA display, audio and PS/2 keyboard',
           'three levels of difficulty, scaling grid size and locations to memorize',
           'managed vsync, audio, and memory operations with double/single buffering',
         ],
         tech: ['DE1-SoC FPGA','RISC V','Embedded C','VGA Display', 'PS/2 Keyboard', 'Audio-Synthesis'],
         images: ['statics/memorygame/progression.png', 'statics/memorygame/guessingsquares.png', 'statics/memorygame/blockdiagram.png','statics/memorygame/difficulty.png', 'statics/memorygame/squaresshown.png','statics/memorygame/gameover.png'],
         github: 'https://github.com/OP-Patel/human-benchmark',
-        seed: 'fpga-memory-game'
+        seed: 'memory-game-fpga'
       },
       {
         title: 'MakeUofT2025 - hackathon 2x Winner B.O.B',
         snippet: 'Arduino/Python: automonomous recycling bin that opens when a recyclable item barcode is scanned',
         details: [
-          'camera-based line detection and curvature estimation',
-          'PID speed/steering loop with auto-tuned gains',
-          'telemetry dashboard for lap timing and plots'
+          '1st place winner for best Sustainable and Green Tech hack & best .net name submission',
+          'determined recyclability of items by scanning barcodes and querying OpenFoodFacts API and provides feedback via Gemini AI',
+          'automated bin lid opening with servo motor and lcd displays how full the bin is with ultrasonic sensor'
         ],
-        tech: ['Jetson Nano','OpenCV','PID','Python'],
-        images: ['assets/projects/line-follower/1.jpg','assets/projects/line-follower/2.jpg','assets/projects/line-follower/3.jpg'],
+        tech: ['Arduino','Python','Sensors', 'Gemini API', 'OpenFoodFacts API', 'Streamlit'],
+        images: ['statics/bob/bin.jpg','statics/bob/streamlit.png','statics/bob/wires.jpg','statics/bob/highdef.jpg'],
         github: 'https://devpost.com/software/battle-over-bins',
         seed: 'makeuoft-2025'
       },
       {
-        title: 'pcb keyboard',
-        snippet: 'Custom 40% hot-swap board with QMK.',
+        title: 'FPGA: gomoku',
+        snippet: 'DE1-SoC FPGA programmed with Verilog to recreate Gomoku',
         details: [
-          'KiCad schematic/PCB; FR4 plate and USB-C ESD protection',
-          'per-key RGB and underglow; VIA-configurable keymap',
-          'case CNC’d from acrylic; gasket-mounted'
+          'used Verilog to create game logic FSMs and communicate with VGA and PS/2 keyboard cores',
+          'created ModelSim testbenches to verify different end-game scenarios and edge cases',
         ],
-        tech: ['KiCad','QMK','STM32','Hotswap'],
-        images: ['assets/projects/pcb-kb/1.jpg','assets/projects/pcb-kb/2.jpg','assets/projects/pcb-kb/3.jpg'],
-        seed: 'pcb-kb'
+        tech: ['Intel Quartus','ModelSim','FPGA','Verilog', 'VGA Display', 'PS/2 Keyboard', 'Digital Logic'],
+        images: ['statics/gomoku/demo.png','statics/gomoku/gameover.png','statics/gomoku/highlevel.png','statics/gomoku/l1.png','statics/gomoku/l2.png','statics/gomoku/l3.png'],
+        github: 'https://github.com/OP-Patel/Gomoku',
+        seed: 'gomoku-fpga'
       },
       {
-        title: 'audio dsp',
-        snippet: 'STM32 real-time EQ + reverb over I2S.',
+        title: 'Arduino: joystick-controlled fan',
+        snippet: 'Arduino project that uses a joystick to control a fan\'s speed and direction',
         details: [
-          'biquad EQ bank and Schroeder reverb at 48 kHz',
-          'fixed-point optimizations; double-buffered DMA',
-          'headphone amp stage with pop suppression'
+          'used KiCad to create scehmatic for the connections between joystick, fan, motor driver, motor and arduino',
+          '3 speed levels and 180 deg rotation control (manual with joystick or automatic moode)',
         ],
-        tech: ['STM32','I2S','DSP','C'],
-        images: ['assets/projects/audio-dsp/1.jpg','assets/projects/audio-dsp/2.jpg','assets/projects/audio-dsp/3.jpg'],
-        seed: 'audio-dsp'
+        tech: ['Arduino','KiCad'],
+        images: ['statics/joystickfan/demo.png','statics/joystickfan/schematic.png'],
+        github: 'https://github.com/OP-Patel/joystick-fan',
+        seed: 'joystick-arduino'
+      },
+      {
+        title: 'Fruchterman-Reingold algorithm visualizer',
+        snippet: 'C program that visualized the FR force-directed drawing algorithm',
+        details: [
+          'implemented the Fruchterman-Reingold algorithm in C to visualize graphs in 2D space',
+          'effectively balances the graph using attration (edges) and repulsion (nodes)',
+          'made an interactive GUI with SDL to pan, zoom, drag nodes, replay steps and frames'
+        ],
+        tech: ['C','SDL'],
+        images: ['statics/visualizer/largescale.png','statics/visualizer/lsafter.png','statics/visualizer/k6before.png', 'statics/visualizer/k6after.png'],
+        github: 'https://github.com/OP-Patel/Fruchterman-Reingold_Visualizer',
+        seed: 'fralgo-c'
       }
     ];
 
