@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
           'simulated class F vs D vs E topologies in LTSpice before prototyping',
         ],
         tech: ['Altium Designer','LTSpice','Lab Equipment','Python Scripting', 'Rapid Prototyping', 'Soldering', 'PCB Design', 'Circuit Design'],
-        images: ['/statics/pa-lpf/pcb_final.png','statics/pa-lpf/final_circuit.png','statics/pa-lpf/final_results.png','statics/pa-lpf/breadboard.png', 'statics/pa-lpf/assembled.png', 'statics/pa-lpf/simulations.png'],
+        images: ['statics/pa-lpf/pcb_final.png','statics/pa-lpf/final_circuit.png','statics/pa-lpf/final_results.png','statics/pa-lpf/breadboard.png', 'statics/pa-lpf/assembled.png', 'statics/pa-lpf/simulations.png'],
         github: 'https://github.com/OP-Patel/pa-lpf-pcb',
         seed: 'pa-lpf-pcb'
       },
