@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
       detailList.innerHTML = p.details.map(d => `<li>${d}</li>`).join('');
       asideTags.innerHTML  = p.tech.map(t => `<li>${t}</li>`).join('');
 
-      // GitHub link (if present)
+      // GitHub link
       if (modalGithub) {
         const ghHref = normalizeUrl(p.github || GITHUB_PROFILE);
         if (ghHref) {
@@ -339,8 +339,8 @@ document.addEventListener('DOMContentLoaded', () => {
  * =======================*/
 (function initResume(){
   const RESUME = {
-    pdf: 'statics/resume/Om-Patel-Resume.pdf', // ← update if you use different names/paths
-    img: 'statics/resume/Om-Patel-Resume.png'
+    pdf: 'statics/resume/Om-Patel-Resume.pdf', 
+    img: 'statics/resume/Om-Patel-Resume.jpg'
   };
 
   const imgEl       = document.querySelector('#resume-img');
@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
   downloadBtn.href = RESUME.pdf;
   downloadBtn.setAttribute('download', RESUME.pdf.split('/').pop() || 'resume.pdf');
 
-  // Load preview image; hide frame if it fails (e.g., you only uploaded a PDF)
+  // Load preview image
   imgEl.src = RESUME.img;
   imgEl.addEventListener('error', () => {
     const frame = imgEl.closest('.resume-frame');

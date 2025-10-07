@@ -55,7 +55,7 @@ body{
   border-radius:50%; pointer-events:none; z-index:2147483647;
   --x:0; --y:0; --s:1;
   transform:translate(calc(var(--x)*1px), calc(var(--y)*1px)) translate(-50%,-50%) scale(var(--s));
-  transition:opacity 160ms ease, transform 100ms ease;
+  transition:opacity 160ms ease;
   opacity:0; box-shadow:0 0 12px rgba(255,59,48,.35);
   will-change:transform,opacity;
 }
@@ -213,7 +213,7 @@ body{
     0 0 0 1px rgba(255,255,255,.08) inset;
 }
 
-/* Image + text (unchanged except for slightly taller image) */
+/* Image + text */
 .tile img{
   width:100%;
   height:280px;
@@ -315,7 +315,7 @@ body{
   box-shadow: 0 0 0 3px rgba(255,59,48,.45), 0 6px 16px rgba(0,0,0,.35);
 }
 
-/* ensure the base hover translate from generic .icon-btn doesn't nudge these */
+/* ensure the base hover translate from generic */
 .slides .icon-btn.prev,
 .slides .icon-btn.next{
   transform: translateY(-50%);
@@ -357,7 +357,7 @@ body{
 }
 .resume-frame.hide{ display:none }
 
-/* Buttons (matches your UI vibe) */
+/* Buttons*/
 .btn{
   display:inline-flex;
   align-items:center;
