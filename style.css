@@ -229,8 +229,7 @@ select {
   top: calc(100% + 8px);
   right: 0;
   width: auto;
-  display: grid;
-  grid-template-columns: repeat(3, 44px);
+  display: flex;
   gap: 4px;
   padding: 8px;
   border: 1px solid var(--line);
@@ -1416,7 +1415,6 @@ h3 {
     position: static;
     width: 100%;
     margin-top: 6px;
-    grid-template-columns: repeat(3, 48px);
     justify-content: center;
     box-shadow: none;
     opacity: 1;
@@ -1428,7 +1426,7 @@ h3 {
   .nav-menu:hover .nav-menu-panel,
   .nav-menu:focus-within .nav-menu-panel,
   .nav-menu.open .nav-menu-panel {
-    display: grid;
+    display: flex;
   }
 
   .section-shell {
