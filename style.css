@@ -763,6 +763,19 @@ h3 {
   color: var(--green-dark);
 }
 
+.experience-tags {
+  margin-top: 12px;
+}
+
+.experience-tags .tag {
+  min-height: 25px;
+  padding: 3px 8px;
+  border-color: rgba(37, 99, 235, 0.26);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.72rem;
+}
+
 .experience-item ul,
 .modal-details ul {
   margin: 0;
