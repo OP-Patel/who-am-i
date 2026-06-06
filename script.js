@@ -253,8 +253,29 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", () => {
         nav.classList.remove("open");
         toggle.setAttribute("aria-expanded", "false");
+        qsa(".nav-menu.open").forEach(closeContactMenu);
       });
     });
+
+    qsa(".nav-menu-trigger").forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const menu = trigger.closest(".nav-menu");
+        if (!menu) return;
+        const isOpen = menu.classList.toggle("open");
+        trigger.setAttribute("aria-expanded", String(isOpen));
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      qsa(".nav-menu.open").forEach((menu) => {
+        if (!menu.contains(event.target)) closeContactMenu(menu);
+      });
+    });
+  }
+
+  function closeContactMenu(menu) {
+    menu.classList.remove("open");
+    qs(".nav-menu-trigger", menu)?.setAttribute("aria-expanded", "false");
   }
 
   function initReveal() {
