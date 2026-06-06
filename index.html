@@ -3,206 +3,217 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Om Patel</title>
-
-  <!-- Fonts -->
-  <link rel="preload" as="font" href="/fonts/JetBrainsMono[wght].woff2" type="font/woff2" crossorigin>
+  <meta name="description" content="Om Patel is a UofT Electrical Engineering student building embedded systems, automation infrastructure, hardware prototypes, and applied ML projects." />
+  <meta property="og:title" content="Om Patel | Hardware and Software Engineer" />
+  <meta property="og:description" content="Recruiter-friendly engineering portfolio with featured hardware, software, embedded, and ML projects." />
+  <meta property="og:type" content="website" />
+  <title>Om Patel | Engineering Portfolio</title>
+  <link rel="preload" as="font" href="fonts/JetBrainsMono[wght].woff2" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-
-  <!-- Top-left badge -->
-  <div class="corner-badge">looking for 2026 internships: <span>all things electronic</span></div>
-
-  <!-- LEFT NAV -->
-  <nav class="side-nav">
-    <a href="#home">name</a>
-    <a href="#experience">experience</a>
-    <a href="#projects">projects</a>
-    <a href="#about">about me</a>
-    <a href="#resume">resume</a>
-  </nav>
-
-  <!-- HERO / LANDING -->
-  <section id="home" class="section hero">
-    <h1 id="hero-name" class="binary-name underlined reveal" aria-label="om patel">om patel</h1>
-    <p class="subtitle reveal delay-1"> <span class="emoji">⚡ </span> university of toronto electrical engineering + pey co-op <span class="emoji">⚡ </span></p>
-
-    <!-- Contact -->
-    <ul class="contact reveal delay-1">
-      <li><a href="tel:+16477633588">647&nbsp;763-3588</a></li>
-      <li><a href="mailto:omprakash.patel@mail.utoronto.ca">omprakash.patel@mail.utoronto.ca</a></li>
-      <li><a href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener">linkedin.com/in/om-patel-op</a></li>
-    </ul>
-
-    <div class="scroll-hint" aria-hidden="true">scroll</div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="section reveal">
-    <h2 class="section-title underlined section-heading">experience (in brief)</h2>
-
-    <div class="xp-stack">
-      <!-- 1) FNZ -->
-      <article class="xp-card reveal-stagger">
-        <header class="xp-header">
-          <h3 class="card-title underlined">FNZ - Analyst Software Tester Intern</h3>
-          <div class="xp-meta">
-            <span class="pill">Toronto, ON</span>
-            <span class="dot">•</span>
-            <span class="pill">term length: 4 months</span>
-          </div>
-        </header>
-        <div class="xp-body">
-          <aside class="xp-aside">
-            <h4 class="aside-title">skills</h4>
-            <ul class="tags">
-              <li>SQL</li><li>JavaScript</li><li>Postman</li><li>Virtuoso QA</li>
-              <li>RabbitMQ</li><li>JIRA</li><li>Automated Testing</li><li>Solution Design</li>
-            </ul>
-          </aside>
-          <div class="xp-main">
-            <h4 class="aside-title">what i did</h4>
-            <ul class="xp-list">
-              <li>raise platform defects (root cause analysis) and test dev fixes</li>
-              <li>debugged, maintained and created new automated test cases/plans</li>
-              <li>executed 3x/weekly regression and integration platform tests</li>
-              <li>solution design for etf/mutual fund mapping from datafeed->DB</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <!-- 2) Experience slot -->
-      <article class="xp-card reveal-stagger">
-        <header class="xp-header">
-          <h3 class="card-title underlined">UofT Engineering Career Center - <br> Data and Admin Assistant</h3>
-          <div class="xp-meta">
-            <span class="pill">Toronto, ON</span>
-            <span class="dot">•</span>
-            <span class="pill">term length: 4 months</span>
-          </div>
-        </header>
-        <div class="xp-body">
-          <aside class="xp-aside">
-            <h4 class="aside-title">skills</h4>
-            <ul class="tags">
-              <li>Excel</li><li>Data Analysis</li><li>Presentations</li><li>Report Writing</li>
-            </ul>
-          </aside>
-          <div class="xp-main">
-            <h4 class="aside-title">what i did</h4>
-            <ul class="xp-list">
-              <li>analyzed data to identify student interests and service quality</li>
-              <li>compiled recruitment reports to analyze hiring trends</li>
-              <li>created a power automate flow to route emails to inboxes</li>
-              <li>delivered numerous presentations to program directors</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <!-- 3) Experience slot -->
-      <article class="xp-card reveal-stagger">
-        <header class="xp-header">
-          <h3 class="card-title underlined">UofT - Team/Programming Lead</h3>
-          <div class="xp-meta">
-            <span class="pill">Toronto, ON</span>
-            <span class="dot">•</span>
-            <span class="pill">term length: 4 months</span>
-          </div>
-        </header>
-        <div class="xp-body">
-          <aside class="xp-aside">
-            <h4 class="aside-title">skills</h4>
-            <ul class="tags">
-              <li>Web Development</li><li>Leadership</li><li>Report Writing</li><li>Solution Design</li>
-            </ul>
-          </aside>
-          <div class="xp-main">
-            <h4 class="aside-title">what i did</h4>
-            <ul class="xp-list">
-              <li>led a team of engineers to solve a client-based problem</li>
-              <li>prototyped a web-app from figma→html/css/js</li>
-              <li>presented design reviews and benchmarking results to client</li>
-            </ul>
-          </div>
-        </div>
-      </article>
+<body data-page="home">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Om Patel home">
+      <span class="brand-mark">OP</span>
+      <span>Om Patel</span>
+    </a>
+    <div class="header-callout">
+      <span>Seeking Fall 2026 internships (4-12mo)</span>
+      <a href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener">Reach Out!</a>
     </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section reveal">
-    <h2 class="section-title underlined section-heading">projects</h2>
-    <p class="project-note"><span class="emoji">⭐</span> hover to focus, click a tile for details. <br> <span class="emoji">📸 </span> most projects have demo videos and more info on their respective github repos </p>
-    
-    <div class="projects-grid" id="projects-grid" aria-live="polite"></div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section reveal">
-    <h2 class="section-title underlined section-heading">about me</h2>
-    <article class="longform reveal-stagger">
-      <ul class="about-list">
-        <li><span class="emoji">🎓</span>third year electrical engineering student (focusing on analog and digital electronics + computer hardware)</li>
-        <li><span class="emoji">🚀</span>extremely motivated to make an impact; i love an environment where there is no end to work and always more to chase</li>
-        <li><span class="emoji">🛠️</span>looking specifically for roles with high exposure to chip/board design, embedded development, lab environments</li>
-        <li><span class="emoji">📅</span>open for up to 16 months (term size can vary) and open to relocation</li>
-      </ul>
-    </article>
-  </section>
-
-<!-- RESUME -->
-  <section id="resume" class="section reveal">
-    <h2 class="section-title underlined section-heading">resume</h2>
-
-    <div class="resume-wrap reveal-stagger">
-      <figure class="resume-frame">
-        <img id="resume-img" alt="Resume preview" loading="lazy">
-      </figure>
-
-      <div class="resume-actions">
-        <a id="resume-view" class="btn" href="#" target="_blank" rel="noopener">open pdf ↗</a>
-        <a id="resume-download" class="btn btn-accent" href="#" download>download pdf</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#experience">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="#resume">Resume</a>
+      <div class="nav-menu">
+        <button class="nav-menu-trigger" type="button" aria-haspopup="true">Contact</button>
+        <div class="nav-menu-panel" aria-label="Contact links">
+          <a class="nav-icon-link" href="https://github.com/OP-Patel" target="_blank" rel="noopener" aria-label="GitHub">
+            <span class="svg-icon icon-github" aria-hidden="true"></span>
+          </a>
+          <a class="nav-icon-link" href="mailto:omprakash.patel@mail.utoronto.ca" aria-label="Email">
+            <span class="svg-icon icon-email" aria-hidden="true"></span>
+          </a>
+          <a class="nav-icon-link" href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <span class="svg-icon icon-linkedin" aria-hidden="true"></span>
+          </a>
+        </div>
       </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero section-shell reveal">
+      <div class="hero-top">
+        <div class="hero-intro">
+          <p class="eyebrow">UofT Electrical Engineering + PEY Co-op</p>
+          <h1>hello there! i'm <span class="name-accent">om</span>.</h1>
+          <p class="hero-text">
+            I'm a third year electrical engineering student with a passion for hardware, electronics, embedded systems, automation and breaking stuff! <span aria-hidden="true">⚡</span>
+          </p>
+        </div>
+        <figure class="memoji-card">
+          <img src="statics/self_memoji.png" alt="Om memoji" loading="eager">
+        </figure>
+      </div>
+      <div id="featured" class="hero-featured">
+        <div class="featured-head">
+          <p class="eyebrow">Selected projects</p>
+          <a class="text-link" href="projects.html">See all projects</a>
+        </div>
+        <div class="featured-grid banner-stack" id="featured-projects" aria-live="polite"></div>
+      </div>
+      <a class="scroll-cue" href="#experience">
+        <span>Scroll down</span>
+        <span class="svg-icon icon-scroll" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <section id="experience" class="section-shell reveal">
+      <div class="section-head compact">
+        <p class="eyebrow">Professional background</p>
+        <h2>Experience</h2>
+      </div>
+      <div class="experience-list">
+        <article class="experience-item">
+          <div>
+            <h3>Software / Automation Engineer Intern</h3>
+            <p>Relay Financial | May 2026 - Present</p>
+          </div>
+          <ul>
+            <li>Built CI/CD infrastructure for mobile deployments, improving release reliability across engineering workflows.</li>
+            <li>Owned and maintained 50+ core banking tests covering deposits, accounts, and critical product flows.</li>
+          </ul>
+        </article>
+        <article class="experience-item">
+          <div>
+            <h3>Software Tester Intern</h3>
+            <p>FNZ | May 2025 - Aug 2025</p>
+          </div>
+          <ul>
+            <li>Automated 45+ test cases and helped reduce the retest backlog by 50%.</li>
+            <li>Executed 3x weekly regression/integration cycles and supported market data feed mapping into database workflows.</li>
+          </ul>
+        </article>
+        <article class="experience-item">
+          <div>
+            <h3>Data Analyst and Administrative Assistant</h3>
+            <p>UofT Engineering Career Centre | May 2024 - Aug 2024</p>
+          </div>
+          <ul>
+            <li>Analyzed 1,200+ survey responses and presented service insights to 15+ staff members.</li>
+            <li>Built recruitment trend reports from 2,000+ student records and automated inbox routing with Power Automate.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section-shell reveal">
+      <div class="section-head compact">
+        <h2>Toolbox</h2>
+      </div>
+      <div class="skill-groups">
+        <article>
+          <span class="skill-icon">SW</span>
+          <h3>Software, testing and ML</h3>
+          <ul class="skill-list">
+            <li><strong>Languages</strong><span>Python, C/C++, JavaScript, SQL, MATLAB</span></li>
+            <li><strong>Automation and QA</strong><span>CI/CD, regression suites, Postman, SQL validation, Git</span></li>
+            <li><strong>ML and data</strong><span>PyTorch, CNNs, computer vision, data augmentation, model evaluation</span></li>
+          </ul>
+        </article>
+        <article>
+          <span class="skill-icon">HW</span>
+          <h3>Embedded and electronics</h3>
+          <ul class="skill-list">
+            <li><strong>Microcontrollers</strong><span>Arduino UNO R3/Q, ESP32, STM32, GPS modules, WiFi</span></li>
+            <li><strong>Circuits and PCB</strong><span>Altium Designer, KiCad, LTspice, soldering, board bring-up</span></li>
+            <li><strong>Controls and sensing</strong><span>Servo control, motor drivers, sensor integration, oscilloscope debugging</span></li>
+          </ul>
+        </article>
+        <article>
+          <span class="skill-icon">FP</span>
+          <h3>Digital hardware systems</h3>
+          <ul class="skill-list">
+            <li><strong>FPGA platforms</strong><span>DE1-SoC, VGA display, PS/2 keyboard, audio synthesis</span></li>
+            <li><strong>HDL and tools</strong><span>Verilog FSMs, ModelSim testbenches, Intel Quartus</span></li>
+            <li><strong>System design</strong><span>Frame buffers, input handling, game-state logic, hardware/software boundaries</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="resume" class="section-shell reveal">
+      <div class="section-head compact">
+        <p class="eyebrow">Resume</p>
+        <h2>Choose your version</h2>
+        <p>Transcript available upon request.</p>
+      </div>
+      <div class="resume-grid">
+        <article class="resume-card">
+          <img src="statics/resume/Om_Patel_ResumeSW.png" alt="Software resume preview" loading="lazy">
+          <div>
+            <h3>Software resume</h3>
+            <p>Automation, testing, applied ML, data, and software project focus.</p>
+            <a class="btn small" href="statics/resume/Om_Patel_ResumeSW.pdf" target="_blank" rel="noopener">Open PDF</a>
+          </div>
+        </article>
+        <article class="resume-card">
+          <img src="statics/resume/Om_Patel_ResumeHW.png" alt="Hardware resume preview" loading="lazy">
+          <div>
+            <h3>Hardware resume</h3>
+            <p>Embedded systems, circuit design, FPGA, PCB, and hardware project focus.</p>
+            <a class="btn small" href="statics/resume/Om_Patel_ResumeHW.pdf" target="_blank" rel="noopener">Open PDF</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Om Patel</p>
+    <div class="footer-socials">
+      <a class="social-link" href="mailto:omprakash.patel@mail.utoronto.ca" aria-label="Email">
+        <span class="svg-icon icon-email" aria-hidden="true"></span>
+      </a>
+      <a class="social-link" href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <span class="svg-icon icon-linkedin" aria-hidden="true"></span>
+      </a>
+      <a class="social-link" href="https://github.com/OP-Patel" target="_blank" rel="noopener" aria-label="GitHub">
+        <span class="svg-icon icon-github" aria-hidden="true"></span>
+      </a>
     </div>
-  </section>
+  </footer>
 
-
-  <!-- Custom Cursor -->
-  <div id="cursor-dot" aria-hidden="true"></div>
-
-  <!-- Project Modal -->
-  <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-card">
       <header class="modal-header">
-        <div class="modal-header-text">
-          <h3 id="modal-title"></h3>
-          <p id="modal-snippet" class="modal-snippet"></p>
+        <div>
+          <p class="eyebrow" id="modal-type"></p>
+          <h2 id="modal-title"></h2>
+          <p id="modal-summary"></p>
         </div>
-        <button class="icon-btn" id="modal-close" aria-label="Close">✕</button>
+        <button class="icon-btn" id="modal-close" type="button" aria-label="Close project details">x</button>
       </header>
-
-      <!-- BODY: slides + right details panel (integrated) -->
       <div class="modal-body">
-        <div class="slides" id="modal-slides">
-          <button class="icon-btn prev" id="slide-prev" aria-label="Previous">‹</button>
-          <button class="icon-btn next" id="slide-next" aria-label="Next">›</button>
-        </div>
-
-        <aside class="modal-aside" id="modal-aside">
-          <h4>details</h4>
-          <ul class="detail-list" id="modal-detail-list"></ul>
-          <h4 class="mt">tech</h4>
-          <ul class="tags" id="modal-aside-tags"></ul>
-          <a id="modal-github" class="gh-link mt" href="#" target="_blank" rel="noopener">view on github ↗</a>
+        <section class="gallery" aria-label="Project gallery">
+          <button class="gallery-btn prev" id="slide-prev" type="button" aria-label="Previous image">&lt;</button>
+          <div class="gallery-stage" id="modal-gallery"></div>
+          <button class="gallery-btn next" id="slide-next" type="button" aria-label="Next image">&gt;</button>
+        </section>
+        <aside class="modal-details">
+          <div class="stat-row" id="modal-stats"></div>
+          <h3>What I built</h3>
+          <ul id="modal-details"></ul>
+          <h3>Tech</h3>
+          <div class="tag-row" id="modal-tags"></div>
+          <div class="modal-links" id="modal-links"></div>
         </aside>
       </div>
-
-      <footer class="modal-footer">
-        <p id="modal-caption"></p>
-      </footer>
     </div>
   </div>
 

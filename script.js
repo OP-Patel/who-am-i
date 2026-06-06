@@ -1,363 +1,504 @@
-document.addEventListener('DOMContentLoaded', () => {
-  /* =========================
-   * Helpers
-   * =======================*/
-  const qs  = (sel, el = document) => el.querySelector(sel);
-  const qsa = (sel, el = document) => [...el.querySelectorAll(sel)];
+document.addEventListener("DOMContentLoaded", () => {
+  const qs = (selector, root = document) => root.querySelector(selector);
+  const qsa = (selector, root = document) => [...root.querySelectorAll(selector)];
 
-  const GITHUB_PROFILE = 'https://github.com/OP-Patel';
+  const projects = [
+    {
+      id: "land-use-classification",
+      title: "Land-Use Classification Model",
+      type: "Deep Learning",
+      summary: "PyTorch CNN pipeline for satellite land-use image classification.",
+      description: "Built a PyTorch CNN pipeline for satellite land-use classification, including data augmentation, model iteration, and confusion-matrix analysis. The final model reached 96.9% validation accuracy and was packaged with a full technical report.",
+      stats: ["96.9% accuracy", "46+ pp improvement", "APS360 final project"],
+      tags: ["Python", "PyTorch", "Deep Learning", "CNN", "Computer Vision", "Data Augmentation", "Software"],
+      details: [
+        "Designed the training pipeline, model architecture, augmentation strategy, and evaluation flow.",
+        "Compared baseline and improved models using confusion matrices and qualitative prediction examples.",
+        "Documented architecture choices, results, and failure modes in a final engineering report."
+      ],
+      images: [
+        "statics/deepLearningProject/finalArchPipeline.png",
+        "statics/deepLearningProject/resultsPDFSS.png",
+        "statics/deepLearningProject/confusionAndExample.png",
+        "statics/deepLearningProject/dataAugExample.png"
+      ],
+      links: [
+        { label: "Open report", url: "statics/deepLearningProject/APS360_Final_Report-1.pdf" }
+      ],
+      featured: false,
+      year: 2026,
+      impact: 1
+    },
+    {
+      id: "wearalert",
+      title: "WearAlert",
+      type: "Embedded Systems",
+      summary: "Wearable embedded alert system using ESP32, STM32, sensing, and WiFi.",
+      description: "Developed a wearable embedded alert prototype for fall and safety monitoring. The build combined ESP32/STM32 hardware, wireless communication, sensor-driven behavior, and a judged hardware demo that was nominated as a Top 20 ECE342 Computer Hardware project.",
+      stats: ["Top 20 ECE342 project", "Computer hardware", "ESP32 + STM32"],
+      featureOrder: 3,
+      featureMetric: "Nominated <span class='metric-accent'>Top 20 Project</span> in ECE342 - Computer Hardware",
+      featureTags: ["Embedded System", "ESP32", "STM32", "WiFi"],
+      featureFocus: "center 42%",
+      tags: ["Embedded Systems", "ESP32", "STM32", "WiFi", "Sensor Integration", "Soldering", "Hardware Demo"],
+      details: [
+        "Built and demonstrated a wearable embedded prototype with sensor-triggered alert behavior.",
+        "Integrated ESP32/STM32 hardware and WiFi communication into a presentable demo form factor.",
+        "Prepared a hardware-focused presentation around reliability, usability, and fall-monitoring context."
+      ],
+      images: [
+        "statics/wearalert/presentation_pic.jpg",
+        "statics/wearalert/onDeskPicture.jpg",
+        "statics/wearalert/seated_pic.jpg"
+      ],
+      links: [
+        { label: "GitHub", url: "https://github.com/OP-Patel/wearalert" }
+      ],
+      featured: true,
+      year: 2026,
+      impact: 2
+    },
+    {
+      id: "bob",
+      title: "B.O.B. Recycling Bin",
+      type: "MakeUofT Hardware Hackathon 2025",
+      summary: "Barcode-aware recycling bin with Arduino actuation and Python feedback.",
+      description: "Built a smart recycling bin for MakeUofT Hardware Hackathon 2025 using Arduino UNO R3 hardware, Python, Streamlit, barcode lookup, and servo actuation. The prototype won two categories: Sustainability and Domain Name.",
+      stats: ["2x MakeUofT Hardware Hackathon 2025 winner", "Sustainability + Domain Name", "Arduino UNO R3"],
+      featureOrder: 1,
+      featureMetric: "MakeUofT Hardware Hackathon 2025: 2x <span class='metric-accent'>Winner</span> for Sustainability + Domain Name",
+      featureTags: ["Python", "Arduino UNO R3", "Streamlit", "Servo Control"],
+      featureFocus: "center 48%",
+      tags: ["Arduino", "Arduino UNO R3", "Python", "Streamlit", "Servo Control", "Barcode Scanning", "OpenFoodFacts API", "Gemini API"],
+      details: [
+        "Connected barcode scanning to recyclability lookup through OpenFoodFacts and AI-assisted feedback.",
+        "Controlled servo lid behavior and sensing logic with Arduino UNO R3 hardware.",
+        "Built the Streamlit interface and integrated the prototype into a complete judging demo."
+      ],
+      images: [
+        "statics/bob/selfie_bob.jpg",
+        "statics/bob/bin.jpg",
+        "statics/bob/highdef.jpg",
+        "statics/bob/streamlit.png",
+        "statics/bob/wires.jpg"
+      ],
+      links: [
+        { label: "Devpost", url: "https://devpost.com/software/battle-over-bins" }
+      ],
+      featured: true,
+      year: 2025,
+      impact: 3
+    },
+    {
+      id: "breadcrumb",
+      title: "Bread Crumb Trail",
+      type: "MakeUofT Hardware Hackathon 2026",
+      summary: "Portable GPS breadcrumb tracker with an Arduino UNO Q and dashboard.",
+      description: "Built Bread Crumb Trail for MakeUofT Hardware Hackathon 2026: a portable Arduino UNO Q GPS breadcrumb tracker with a Python/Streamlit dashboard for visualizing route data. The project won Best Use of Arduino UNO Q.",
+      stats: ["MakeUofT Hardware Hackathon 2026 winner", "Best Use of Arduino UNO Q", "GPS mapping"],
+      featureOrder: 2,
+      featureMetric: "MakeUofT Hardware Hackathon 2026: <span class='metric-accent'>Winner</span> for Best Use of Arduino UNO Q",
+      featureTags: ["Arduino UNO Q", "GPS", "Python", "Streamlit"],
+      featureFocus: "center 44%",
+      tags: ["Arduino", "Arduino UNO Q", "GPS", "Python", "Streamlit", "Mapping UI", "Location Tracking"],
+      details: [
+        "Built a portable Arduino UNO Q prototype to collect and present GPS breadcrumb data.",
+        "Created a Streamlit dashboard to visualize route and breadcrumb information clearly.",
+        "Balanced physical packaging, sensor integration, and software presentation for judging."
+      ],
+      images: [
+        "statics/breadcrumb/selfie.jpg",
+        "statics/breadcrumb/streamlitWebsite.png",
+        "statics/breadcrumb/topView.png",
+        "statics/breadcrumb/sideView.png",
+        "statics/breadcrumb/crumbsExample.png"
+      ],
+      links: [
+        { label: "Devpost", url: "https://devpost.com/software/breadcrumb-trail" }
+      ],
+      featured: true,
+      year: 2026,
+      impact: 4
+    },
+    {
+      id: "pa-lpf",
+      title: "Class-E Power Amplifier and Filter PCB",
+      type: "RF PCB Design",
+      summary: "16 MHz Class-E amplifier and 7-stage low-pass filter PCB.",
+      description: "Designed, simulated, assembled, and validated a 16 MHz Class-E power amplifier with a 7-stage low-pass filter PCB. The build reached 2.7 W across the antenna load with strong gain and low measured distortion.",
+      stats: ["2.7 W output", "Approx. 30 dB gain", "1.69% THD"],
+      tags: ["PCB", "Altium Designer", "LTspice", "Class-E Amplifier", "Low-Pass Filter", "Oscilloscope", "Python"],
+      details: [
+        "Simulated Class-F, Class-D, and Class-E topologies in LTSpice before prototyping.",
+        "Designed the PCB and assembled the amplifier/filter hardware.",
+        "Validated results with lab equipment and Python-supported oscilloscope testing."
+      ],
+      images: [
+        "statics/pa-lpf/pcb_final.png",
+        "statics/pa-lpf/final_circuit.png",
+        "statics/pa-lpf/final_results.png",
+        "statics/pa-lpf/breadboard.png",
+        "statics/pa-lpf/assembled.png",
+        "statics/pa-lpf/simulations.png"
+      ],
+      links: [
+        { label: "GitHub", url: "https://github.com/OP-Patel/pa-lpf-pcb" }
+      ],
+      featured: false,
+      year: 2025,
+      impact: 5
+    },
+    {
+      id: "memory-game",
+      title: "FPGA Human Benchmark Clone",
+      type: "FPGA Embedded C",
+      summary: "DE1-SoC memory game with VGA, audio, and PS/2 input.",
+      description: "Recreated a Human Benchmark-style memory game on a DE1-SoC FPGA using Embedded C and low-level device control. The project coordinates VGA drawing, PS/2 keyboard input, audio feedback, buffering, and difficulty progression.",
+      stats: ["DE1-SoC", "VGA + PS/2", "Audio synthesis"],
+      tags: ["FPGA", "DE1-SoC", "Embedded C", "VGA", "PS/2 Keyboard", "Audio", "Frame Buffers"],
+      details: [
+        "Programmed the DE1-SoC to control VGA output, PS/2 keyboard input, and audio feedback.",
+        "Implemented three difficulty levels with scaling grids and memorization patterns.",
+        "Managed drawing and memory operations through single and double buffering."
+      ],
+      images: [
+        "statics/memorygame/progression.png",
+        "statics/memorygame/guessingsquares.png",
+        "statics/memorygame/blockdiagram.png",
+        "statics/memorygame/difficulty.png",
+        "statics/memorygame/squaresshown.png",
+        "statics/memorygame/gameover.png"
+      ],
+      links: [
+        { label: "GitHub", url: "https://github.com/OP-Patel/human-benchmark" }
+      ],
+      featured: false,
+      year: 2025,
+      impact: 6
+    },
+    {
+      id: "gomoku",
+      title: "FPGA Gomoku",
+      type: "FPGA Verilog",
+      summary: "Verilog Gomoku game with VGA display, PS/2 input, and testbenches.",
+      description: "Built a playable Gomoku implementation on FPGA using Verilog finite state machines, VGA display logic, PS/2 input handling, and ModelSim testbenches for game-ending scenarios.",
+      stats: ["Verilog FSMs", "ModelSim testbenches", "VGA gameplay"],
+      tags: ["FPGA", "Verilog", "ModelSim", "VGA", "PS/2 Keyboard", "Finite State Machines", "Digital Logic"],
+      details: [
+        "Created game logic FSMs and coordinated VGA and PS/2 keyboard modules.",
+        "Verified edge cases and end-game behavior with ModelSim testbenches.",
+        "Structured the implementation around clear module boundaries and display states."
+      ],
+      images: [
+        "statics/gomoku/demo.png",
+        "statics/gomoku/gameover.png",
+        "statics/gomoku/highlevel.png",
+        "statics/gomoku/l1.png",
+        "statics/gomoku/l2.png",
+        "statics/gomoku/l3.png"
+      ],
+      links: [
+        { label: "GitHub", url: "https://github.com/OP-Patel/Gomoku" }
+      ],
+      featured: false,
+      year: 2025,
+      impact: 7
+    },
+    {
+      id: "joystick-fan",
+      title: "Joystick-Controlled Fan",
+      type: "Embedded Controls",
+      summary: "Arduino fan controller with joystick input, PWM speed, and direction control.",
+      description: "Built an Arduino-based fan controller using joystick input, motor-driver wiring, PWM speed levels, and a rotating control mode. The project includes a KiCad schematic and a working hardware demo.",
+      stats: ["3 speed levels", "180 degree control", "KiCad schematic"],
+      tags: ["Arduino", "Microcontroller", "PWM", "Joystick Input", "Motor Driver", "KiCad", "Motor Control"],
+      details: [
+        "Created the schematic for joystick, fan, motor driver, motor, and Arduino connections.",
+        "Implemented manual joystick control and automatic movement behavior.",
+        "Packaged the project with demo visuals and clear circuit documentation."
+      ],
+      images: [
+        "statics/joystickfan/demo.png",
+        "statics/joystickfan/schematic.png"
+      ],
+      links: [
+        { label: "GitHub", url: "https://github.com/OP-Patel/joystick-fan" }
+      ],
+      featured: false,
+      year: 2025,
+      impact: 8
+    }
+  ];
 
-  const withFallback = (url, seed, w = 1400, h = 900) =>
-    new Promise(resolve => {
-      const img = new Image();
-      img.onload  = () => resolve(url);
-      img.onerror = () => resolve(`https://picsum.photos/seed/${encodeURIComponent(seed)}-${Math.random()}/${w}/${h}`);
-      img.src = url;
+  let activeProject = null;
+  let activeSlide = 0;
+
+  initNavigation();
+  initReveal();
+  initFeaturedProjects();
+  initProjectBrowser();
+  initProjectModal();
+
+  function initNavigation() {
+    const toggle = qs(".nav-toggle");
+    const nav = qs(".site-nav");
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-  const normalizeUrl = (u) => {
-    if (!u) return '';
-    if (/^https?:\/\//i.test(u)) return u;
-    return 'https://' + u.replace(/^\/\//, '');
-  };
-
-  /* =========================
-   * Custom cursor
-   * =======================*/
-  (function initCursor(){
-    const dot = qs('#cursor-dot');
-    if (!dot) return;
-
-    const hasFinePointer = matchMedia('(hover:hover) and (pointer:fine)').matches;
-    if (!hasFinePointer) { dot.style.display = 'none'; return; }
-
-    let tx = 0, ty = 0, x = 0, y = 0;
-    const ease = 0.2;
-
-    const tick = () => {
-      x += (tx - x) * ease;
-      y += (ty - y) * ease;
-      dot.style.setProperty('--x', x.toFixed(2));
-      dot.style.setProperty('--y', y.toFixed(2));
-      requestAnimationFrame(tick);
-    };
-    tick();
-
-    addEventListener('pointermove', (e) => { tx = e.clientX; ty = e.clientY; dot.classList.add('visible'); });
-    addEventListener('pointerleave', () => dot.classList.remove('visible'));
-
-    let t;
-    addEventListener('pointerdown', () => { dot.classList.add('shrink'); clearTimeout(t); });
-    addEventListener('pointerup',   () => { t = setTimeout(() => dot.classList.remove('shrink'), 120); });
-  })();
-
-  /* =========================
-   * Binary hover name
-   * =======================*/
-  (function initBinaryName(){
-    const nameEl = qs('#hero-name');
-    if (!nameEl) return;
-
-    const text = nameEl.textContent;
-    nameEl.textContent = '';
-    const frag = document.createDocumentFragment();
-
-    [...text].forEach(ch => {
-      const span = document.createElement('span');
-      span.className = 'char';
-      span.dataset.char = ch;
-      span.textContent = ch === ' ' ? '\u00A0' : ch;
-
-      span.addEventListener('pointerenter', () => {
-        if (ch === ' ') return;
-        span.textContent = Math.random() < 0.5 ? '0' : '1';
-        span.style.color = 'var(--accent)';
-        span.style.transform = 'translateY(-2px)';
+    qsa(".site-nav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
       });
-      span.addEventListener('pointerleave', () => {
-        span.textContent = ch === ' ' ? '\u00A0' : span.dataset.char;
-        span.style.color = '';
-        span.style.transform = '';
-      });
-
-      frag.appendChild(span);
     });
+  }
 
-    nameEl.appendChild(frag);
-  })();
+  function initReveal() {
+    const items = qsa(".reveal");
+    if (!items.length) return;
 
-  /* =========================
-   * Scroll reveal
-   * =======================*/
-  (function initReveal(){
-    const io = new IntersectionObserver(entries => {
-      for (const e of entries) {
-        if (!e.isIntersecting) continue;
-        e.target.classList.add('is-visible');
-
-        if (e.target.classList.contains('reveal-stagger')) {
-          qsa(':scope > *', e.target).forEach((child, i) => {
-            child.style.transitionDelay = `${Math.min(i * 80, 480)}ms`;
-          });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
         }
-      }
-    }, { threshold: 0.15 });
+      });
+    }, { threshold: 0.12 });
 
-    qsa('.reveal, .reveal-stagger').forEach(el => io.observe(el));
-  })();
+    items.forEach((item) => observer.observe(item));
+  }
 
-  /* =========================
-   * Active left nav on scroll
-   * =======================*/
-  (function initActiveNav(){
-    const links = qsa('.side-nav a');
-    const sections = qsa('section');
-    const setActive = () => {
-      const mid = innerHeight * 0.4;
-      let current = sections[0]?.id || '';
-      for (const s of sections) {
-        const r = s.getBoundingClientRect();
-        if (r.top <= mid) current = s.id;
-      }
-      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${current}`));
-    };
-    setActive();
-    addEventListener('scroll', setActive, { passive: true });
-  })();
+  function initFeaturedProjects() {
+    const grid = qs("#featured-projects");
+    if (!grid) return;
 
-  /* =========================
-   * Projects grid + modal
-   * =======================*/
-  (function initProjects(){
-    const grid          = qs('#projects-grid');
+    const featured = projects
+      .filter((project) => project.featured)
+      .sort((a, b) => (a.featureOrder || 99) - (b.featureOrder || 99))
+      .slice(0, 3);
+    grid.innerHTML = featured.map((project) => `
+      <button class="feature-tile" type="button" data-project-id="${project.id}">
+        <span class="tile-media">
+          <img src="${project.images[0]}" alt="${project.title} preview" loading="lazy" style="object-position: ${project.featureFocus || "center center"}">
+        </span>
+        <span class="tile-body">
+          <span class="project-type">${project.type}</span>
+          <h3>${project.title}</h3>
+          <span class="project-description">${project.featureMetric || project.stats[0]}</span>
+          <span class="tag-row">${(project.featureTags || project.tags.slice(0, 4)).map(tag).join("")}</span>
+        </span>
+        <span class="tile-arrow" aria-hidden="true">More details &gt;&gt;</span>
+      </button>
+    `).join("");
 
-    // Modal elements
-    const modal         = qs('#project-modal');
-    const modalTitle    = qs('#modal-title');
-    const modalSnippet  = qs('#modal-snippet');
-    const modalSlides   = qs('#modal-slides');
-    const modalCaption  = qs('#modal-caption');
-    const closeBtn      = qs('#modal-close');
-    const prevBtn       = qs('#slide-prev');
-    const nextBtn       = qs('#slide-next');
-    const detailList    = qs('#modal-detail-list');
-    const asideTags     = qs('#modal-aside-tags');
-    const modalGithub   = qs('#modal-github'); 
+    qsa("[data-project-id]", grid).forEach((tile) => {
+      tile.addEventListener("click", () => openProject(tile.dataset.projectId));
+    });
+  }
 
-    // Data
-    const projects = [
-      {
-        title: 'PCB: class e power amplifier and filter',
-        snippet: '16 MHz Class-E PA + 7-stage filter for radio integration',
-        details: [
-          'constructed a Class-E PA and maximally-flat 7-stage low-pass filter',
-          'achieved 2.7 W across antenna load (~30 dB gain) with 1.69% THD',
-          'validated functionality by unit-testing on oscilioscope via python scripting; met radio integration requirements',
-          'simulated class F vs D vs E topologies in LTSpice before prototyping',
-        ],
-        tech: ['Altium Designer','LTSpice','Lab Equipment','Python Scripting', 'Rapid Prototyping', 'Soldering', 'PCB Design', 'Circuit Design'],
-        images: ['statics/pa-lpf/pcb_final.png','statics/pa-lpf/final_circuit.png','statics/pa-lpf/final_results.png','statics/pa-lpf/breadboard.png', 'statics/pa-lpf/assembled.png', 'statics/pa-lpf/simulations.png'],
-        github: 'https://github.com/OP-Patel/pa-lpf-pcb',
-        seed: 'pa-lpf-pcb'
-      },
-      {
-        title: 'FPGA: human benchmark clone',
-        snippet: 'DE1-SoC FPGA (with RISCV structure) programmed with Embedded C to recreate Human Benchmark Memory Game',
-        details: [
-          'DE1-SoC fpga programmed in embedded c to control VGA display, audio and PS/2 keyboard',
-          'three levels of difficulty, scaling grid size and locations to memorize',
-          'managed vsync, audio, and memory operations with double/single buffering',
-        ],
-        tech: ['DE1-SoC FPGA','RISC V','Embedded C','VGA Display', 'PS/2 Keyboard', 'Audio-Synthesis'],
-        images: ['statics/memorygame/progression.png', 'statics/memorygame/guessingsquares.png', 'statics/memorygame/blockdiagram.png','statics/memorygame/difficulty.png', 'statics/memorygame/squaresshown.png','statics/memorygame/gameover.png'],
-        github: 'https://github.com/OP-Patel/human-benchmark',
-        seed: 'memory-game-fpga'
-      },
-      {
-        title: 'MakeUofT2025 - hackathon 2x Winner B.O.B',
-        snippet: 'Arduino/Python: automonomous recycling bin that opens when a recyclable item barcode is scanned',
-        details: [
-          '1st place winner for best Sustainable and Green Tech hack & best .net name submission',
-          'determined recyclability of items by scanning barcodes and querying OpenFoodFacts API and provides feedback via Gemini AI',
-          'automated bin lid opening with servo motor and lcd displays how full the bin is with ultrasonic sensor'
-        ],
-        tech: ['Arduino','Python','Sensors', 'Gemini API', 'OpenFoodFacts API', 'Streamlit'],
-        images: ['statics/bob/bin.jpg','statics/bob/streamlit.png','statics/bob/wires.jpg','statics/bob/highdef.jpg'],
-        github: 'https://devpost.com/software/battle-over-bins',
-        seed: 'makeuoft-2025'
-      },
-      {
-        title: 'FPGA: gomoku',
-        snippet: 'DE1-SoC FPGA programmed with Verilog to recreate Gomoku',
-        details: [
-          'used Verilog to create game logic FSMs and communicate with VGA and PS/2 keyboard cores',
-          'created ModelSim testbenches to verify different end-game scenarios and edge cases',
-        ],
-        tech: ['Intel Quartus','ModelSim','FPGA','Verilog', 'VGA Display', 'PS/2 Keyboard', 'Digital Logic'],
-        images: ['statics/gomoku/demo.png','statics/gomoku/gameover.png','statics/gomoku/highlevel.png','statics/gomoku/l1.png','statics/gomoku/l2.png','statics/gomoku/l3.png'],
-        github: 'https://github.com/OP-Patel/Gomoku',
-        seed: 'gomoku-fpga'
-      },
-      {
-        title: 'Arduino: joystick-controlled fan',
-        snippet: 'Arduino project that uses a joystick to control a fan\'s speed and direction',
-        details: [
-          'used KiCad to create scehmatic for the connections between joystick, fan, motor driver, motor and arduino',
-          '3 speed levels and 180 deg rotation control (manual with joystick or automatic moode)',
-        ],
-        tech: ['Arduino','KiCad'],
-        images: ['statics/joystickfan/demo.png','statics/joystickfan/schematic.png'],
-        github: 'https://github.com/OP-Patel/joystick-fan',
-        seed: 'joystick-arduino'
-      },
-      {
-        title: 'Fruchterman-Reingold algorithm visualizer',
-        snippet: 'C program that visualized the FR force-directed drawing algorithm',
-        details: [
-          'implemented the Fruchterman-Reingold algorithm in C to visualize graphs in 2D space',
-          'effectively balances the graph using attration (edges) and repulsion (nodes)',
-          'made an interactive GUI with SDL to pan, zoom, drag nodes, replay steps and frames'
-        ],
-        tech: ['C','SDL'],
-        images: ['statics/visualizer/largescale.png','statics/visualizer/lsafter.png','statics/visualizer/k6before.png', 'statics/visualizer/k6after.png'],
-        github: 'https://github.com/OP-Patel/Fruchterman-Reingold_Visualizer',
-        seed: 'fralgo-c'
-      }
+  function initProjectBrowser() {
+    const list = qs("#project-list");
+    const filters = qs("#project-filters");
+    const search = qs("#project-search");
+    const sort = qs("#project-sort");
+    const clear = qs("#clear-filters");
+    const count = qs("#result-count");
+    if (!list || !filters || !search || !sort || !clear || !count) return;
+
+    const commonTags = [
+      "Python", "Arduino", "Embedded Systems", "ESP32", "STM32", "GPS",
+      "PyTorch", "FPGA", "Verilog", "PCB", "VGA", "Motor Control"
     ];
+    const selected = new Set();
 
-    let currentProject = 0;
-    let currentSlide   = 0;
+    filters.innerHTML = commonTags.map((tagName) => `
+      <button class="filter-chip" type="button" data-tag="${tagName}" aria-pressed="false">${tagName}</button>
+    `).join("");
 
-    const buildGrid = async () => {
-      if (!grid) return;
-      grid.innerHTML = '';
-
-      for (let i = 0; i < projects.length; i++) {
-        const p = projects[i];
-        const tile = document.createElement('article');
-        tile.className = 'tile';
-        tile.dataset.index = String(i);
-
-        // shoot-in from left/right
-        tile.style.setProperty('--fromX', (i % 2 === 0 ? '-120px' : '120px'));
-        tile.style.transitionDelay = `${i * 70}ms`;
-
-        const coverSrc = await withFallback(p.images[0], p.seed);
-        tile.innerHTML = `
-          <img src="${coverSrc}" alt="${p.title} cover" loading="lazy">
-          <div class="tile-info">
-            <h3 class="title">${p.title}</h3>
-            <p class="desc">${p.snippet}</p>
-          </div>
-        `;
-        tile.addEventListener('click', () => openModal(i));
-        grid.appendChild(tile);
-      }
-    };
-
-    const gridObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-    }, { threshold: 0.15 });
-
-    function openModal(index){
-      currentProject = index;
-      currentSlide   = 0;
-
-      const p = projects[index];
-      modalTitle.textContent   = p.title;
-      modalSnippet.textContent = p.snippet;
-      modalCaption.textContent = '';
-
-      // detail bullets + tech
-      detailList.innerHTML = p.details.map(d => `<li>${d}</li>`).join('');
-      asideTags.innerHTML  = p.tech.map(t => `<li>${t}</li>`).join('');
-
-      // GitHub link
-      if (modalGithub) {
-        const ghHref = normalizeUrl(p.github || GITHUB_PROFILE);
-        if (ghHref) {
-          modalGithub.href = ghHref;
-          modalGithub.textContent = p.github ? 'view repository ↗' : 'my github ↗';
-          modalGithub.style.display = 'inline-flex';
+    qsa(".filter-chip", filters).forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const tagName = chip.dataset.tag;
+        if (selected.has(tagName)) {
+          selected.delete(tagName);
         } else {
-          modalGithub.style.display = 'none';
+          selected.add(tagName);
         }
+        chip.classList.toggle("active", selected.has(tagName));
+        chip.setAttribute("aria-pressed", String(selected.has(tagName)));
+        renderProjects();
+      });
+    });
+
+    clear.addEventListener("click", () => {
+      selected.clear();
+      search.value = "";
+      qsa(".filter-chip", filters).forEach((chip) => {
+        chip.classList.remove("active");
+        chip.setAttribute("aria-pressed", "false");
+      });
+      renderProjects();
+      search.focus();
+    });
+
+    search.addEventListener("input", renderProjects);
+    sort.addEventListener("change", renderProjects);
+    renderProjects();
+
+    function renderProjects() {
+      const query = search.value.trim().toLowerCase();
+      const selectedTags = [...selected];
+      let results = projects.filter((project) => {
+        const haystack = [
+          project.title,
+          project.type,
+          project.summary,
+          project.description,
+          ...project.tags,
+          ...project.stats
+        ].join(" ").toLowerCase();
+
+        const matchesSearch = !query || haystack.includes(query);
+        const matchesTags = selectedTags.length === 0 || selectedTags.some((tagName) => project.tags.includes(tagName));
+        return matchesSearch && matchesTags;
+      });
+
+      results = sortProjects(results, sort.value);
+      count.textContent = `${results.length} project${results.length === 1 ? "" : "s"} shown`;
+
+      if (!results.length) {
+        list.innerHTML = `<div class="empty-state">No projects match those filters yet. Try clearing one chip or searching a broader term.</div>`;
+        return;
       }
 
-      // slides
-      qsa('img', modalSlides).forEach(el => el.remove());
-      Promise.all(p.images.map((src, i) => withFallback(src, `${p.seed}-${i}`)))
-        .then(urls => {
-          urls.forEach((url, i) => {
-            const img = document.createElement('img');
-            img.alt = `${p.title} image ${i + 1}`;
-            img.src = url;
-            if (i === 0) img.classList.add('active');
-            modalSlides.appendChild(img);
-          });
+      list.innerHTML = results.map((project) => `
+        <article class="project-card" data-project-id="${project.id}" role="button" tabindex="0" aria-label="View ${project.title} details">
+          <div class="project-thumb">
+            <img src="${project.images[0]}" alt="${project.title} preview" loading="lazy">
+          </div>
+          <div class="project-card-body">
+            <span class="project-type">${project.type}</span>
+            <h3>${project.title}</h3>
+            <p>${project.summary}</p>
+            <span class="project-stat">${project.stats.join(" | ")}</span>
+            <div class="tag-row">${project.tags.slice(0, 5).map(tag).join("")}</div>
+            <div class="project-card-actions">
+              <span class="card-button">View details</span>
+              ${project.links[0] ? projectLink(project.links[0]) : ""}
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      qsa(".project-card", list).forEach((card) => {
+        card.addEventListener("click", () => openProject(card.dataset.projectId));
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openProject(card.dataset.projectId);
+          }
         });
+      });
 
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
+      qsa(".project-card a", list).forEach((link) => {
+        link.addEventListener("click", (event) => event.stopPropagation());
+      });
     }
+  }
 
-    function closeModal(){
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
+  function sortProjects(items, mode) {
+    const sorted = [...items];
+    if (mode === "recent") {
+      return sorted.sort((a, b) => b.year - a.year || a.impact - b.impact);
     }
-
-    function go(delta){
-      const imgs = qsa('img', modalSlides);
-      if (!imgs.length) return;
-      imgs[currentSlide]?.classList.remove('active');
-      currentSlide = (currentSlide + delta + imgs.length) % imgs.length;
-      imgs[currentSlide]?.classList.add('active');
+    if (mode === "name") {
+      return sorted.sort((a, b) => a.title.localeCompare(b.title));
     }
+    return sorted.sort((a, b) => a.impact - b.impact);
+  }
 
-    // Wire up events
-    if (grid) gridObserver.observe(grid);
-    buildGrid();
+  function initProjectModal() {
+    const modal = qs("#project-modal");
+    if (!modal) return;
 
-    qs('#modal-close')?.addEventListener('click', closeModal);
-    qs('#slide-prev')?.addEventListener('click', () => go(-1));
-    qs('#slide-next')?.addEventListener('click', () => go(1));
+    qs("#modal-close")?.addEventListener("click", closeProject);
+    qs("#slide-prev")?.addEventListener("click", () => moveSlide(-1));
+    qs("#slide-next")?.addEventListener("click", () => moveSlide(1));
 
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    addEventListener('keydown', (e) => {
-      if (!modal.classList.contains('open')) return;
-      if (e.key === 'Escape') closeModal();
-      if (e.key === 'ArrowLeft')  go(-1);
-      if (e.key === 'ArrowRight') go(1);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeProject();
     });
-  })();
+
+    document.addEventListener("keydown", (event) => {
+      if (!modal.classList.contains("open")) return;
+      if (event.key === "Escape") closeProject();
+      if (event.key === "ArrowLeft") moveSlide(-1);
+      if (event.key === "ArrowRight") moveSlide(1);
+    });
+  }
+
+  function openProject(projectId) {
+    const project = projects.find((item) => item.id === projectId);
+    const modal = qs("#project-modal");
+    if (!project || !modal) return;
+
+    activeProject = project;
+    activeSlide = 0;
+
+    qs("#modal-type").textContent = project.type;
+    qs("#modal-title").textContent = project.title;
+    qs("#modal-summary").textContent = project.description;
+    qs("#modal-stats").innerHTML = project.stats.map((item) => `<span class="stat-pill">${item}</span>`).join("");
+    qs("#modal-details").innerHTML = project.details.map((item) => `<li>${item}</li>`).join("");
+    qs("#modal-tags").innerHTML = project.tags.map(tag).join("");
+    qs("#modal-links").innerHTML = project.links.length
+      ? project.links.map(projectLink).join("")
+      : projectLink({ label: "GitHub profile", url: "https://github.com/OP-Patel" });
+
+    qs("#modal-gallery").innerHTML = project.images.map((src, index) => `
+      <img src="${src}" alt="${project.title} image ${index + 1}" class="${index === 0 ? "active" : ""}" loading="lazy">
+    `).join("");
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    qs("#modal-close")?.focus();
+  }
+
+  function closeProject() {
+    const modal = qs("#project-modal");
+    if (!modal) return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    activeProject = null;
+    activeSlide = 0;
+  }
+
+  function moveSlide(delta) {
+    if (!activeProject) return;
+    const images = qsa("#modal-gallery img");
+    if (!images.length) return;
+
+    images[activeSlide]?.classList.remove("active");
+    activeSlide = (activeSlide + delta + images.length) % images.length;
+    images[activeSlide]?.classList.add("active");
+  }
+
+  function tag(label) {
+    return `<span class="tag">${label}</span>`;
+  }
+
+  function projectLink(link) {
+    const isGitHub = link.label.toLowerCase().includes("github");
+    const label = isGitHub
+      ? `<span class="svg-icon icon-github" aria-hidden="true"></span><span class="sr-only">${link.label}</span>`
+      : `<span>${link.label}</span><span class="svg-icon icon-external" aria-hidden="true"></span>`;
+
+    return `<a class="btn small project-link-btn" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}">${label}</a>`;
+  }
 });
-
-/* =========================
- * Resume: image preview + open/download links
- * =======================*/
-(function initResume(){
-  const RESUME = {
-    pdf: 'statics/resume/Om-Patel-Resume.pdf', 
-    img: 'statics/resume/Om-Patel-Resume.jpg'
-  };
-
-  const imgEl       = document.querySelector('#resume-img');
-  const viewBtn     = document.querySelector('#resume-view');
-  const downloadBtn = document.querySelector('#resume-download');
-
-  if (!imgEl || !viewBtn || !downloadBtn) return;
-
-  // Set URLs
-  viewBtn.href = RESUME.pdf;
-  downloadBtn.href = RESUME.pdf;
-  downloadBtn.setAttribute('download', RESUME.pdf.split('/').pop() || 'resume.pdf');
-
-  // Load preview image
-  imgEl.src = RESUME.img;
-  imgEl.addEventListener('error', () => {
-    const frame = imgEl.closest('.resume-frame');
-    if (frame) frame.classList.add('hide');
-  });
-})();
