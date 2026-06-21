@@ -3,70 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="All engineering projects by Om Patel with searchable tags for Python, C, Embedded, Microcontroller, Deep Learning, FPGA, PCB, and more." />
-  <meta property="og:title" content="Om Patel | All Projects" />
-  <meta property="og:description" content="Search and filter hardware, software, embedded, FPGA, PCB, and machine learning projects." />
+  <meta name="description" content="Engineering projects by Om Patel across software, embedded systems, FPGA, PCB design, and machine learning." />
+  <meta property="og:title" content="Projects | Om Patel" />
+  <meta property="og:description" content="Software, embedded systems, FPGA, PCB, and machine learning projects." />
   <meta property="og:type" content="website" />
   <title>Projects | Om Patel</title>
-  <link rel="preload" as="font" href="fonts/JetBrainsMono[wght].woff2" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20260606-featured-row" />
+  <link rel="preload" as="font" href="fonts/JetBrainsMono-Regular.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=20260621-2" />
 </head>
 <body data-page="projects">
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Om Patel home">
-      <span class="brand-mark">OP</span>
-      <span>Om Patel</span>
-    </a>
-    <div class="header-callout">
-      <span>Seeking Fall 2026 internships (4-12mo)</span>
-      <a href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener">Reach Out!</a>
-    </div>
+  <header class="site-header solid-header">
+    <a class="brand" href="index.html" aria-label="Om Patel home">Om Patel</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
       <span class="svg-icon icon-distribute-vertical" aria-hidden="true"></span>
     </button>
     <nav class="site-nav" aria-label="Primary navigation">
+      <a class="nav-projects" href="projects.html" aria-current="page">Projects <span aria-hidden="true">↗</span></a>
       <a href="index.html#experience">Experience</a>
-      <a href="projects.html" aria-current="page">Projects</a>
       <a href="index.html#resume">Resume</a>
-      <div class="nav-menu">
-        <button class="nav-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">Contact</button>
-        <div class="nav-menu-panel" aria-label="Contact links">
-          <a class="nav-icon-link" href="mailto:omprakash.patel@mail.utoronto.ca" aria-label="Email">
-            <span class="svg-icon icon-email" aria-hidden="true"></span>
-          </a>
-          <a class="nav-icon-link" href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <span class="svg-icon icon-linkedin" aria-hidden="true"></span>
-          </a>
-        </div>
-      </div>
+      <a class="nav-contact" href="mailto:omprakash.patel@mail.utoronto.ca">Contact</a>
     </nav>
   </header>
 
   <main>
     <section class="projects-hero section-shell reveal">
-      <h1>Project Library <span aria-hidden="true">&#128214;</span></h1>
-      <p>Filter by skills, then open a project to see results, links and image albums.</p>
+      <div>
+        <p class="eyebrow">Project archive</p>
+        <h1>Things I’ve built.</h1>
+      </div>
+      <p>Eight projects across software, embedded systems, digital hardware, and electronics.</p>
     </section>
 
-    <section class="project-browser section-shell reveal">
+    <section class="project-browser section-shell">
       <div class="browser-controls">
         <label class="search-box">
-          <span>Search</span>
-          <input id="project-search" type="search" placeholder="Try Python, FPGA, WearAlert..." autocomplete="off" />
+          <span>Search projects</span>
+          <input id="project-search" type="search" placeholder="Search by project or technology" autocomplete="off" />
         </label>
         <label class="sort-box">
-          <span>Sort</span>
+          <span>Sort by</span>
           <select id="project-sort">
-            <option value="impact">Impact</option>
-            <option value="recent">Most recent</option>
+            <option value="impact">Featured</option>
+            <option value="recent">Newest</option>
             <option value="name">Name</option>
           </select>
         </label>
       </div>
       <div class="filter-shell">
         <div class="filter-head">
-          <span>Filter by skill</span>
-          <button class="text-button" id="clear-filters" type="button">Clear</button>
+          <span>Filter</span>
+          <button class="text-button" id="clear-filters" type="button">Reset</button>
         </div>
         <div class="filter-chips" id="project-filters" aria-label="Project filters"></div>
       </div>
@@ -76,17 +62,10 @@
   </main>
 
   <footer class="site-footer">
-    <p>Om Patel</p>
+    <p>© 2026 Om Patel</p>
     <div class="footer-socials">
-      <a class="social-link" href="mailto:omprakash.patel@mail.utoronto.ca" aria-label="Email">
-        <span class="svg-icon icon-email" aria-hidden="true"></span>
-      </a>
-      <a class="social-link" href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <span class="svg-icon icon-linkedin" aria-hidden="true"></span>
-      </a>
-      <a class="social-link" href="https://github.com/OP-Patel" target="_blank" rel="noopener" aria-label="GitHub">
-        <span class="svg-icon icon-github" aria-hidden="true"></span>
-      </a>
+      <a href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/OP-Patel" target="_blank" rel="noopener">GitHub</a>
     </div>
   </footer>
 
@@ -98,19 +77,19 @@
           <h2 id="modal-title"></h2>
           <p id="modal-summary"></p>
         </div>
-        <button class="icon-btn" id="modal-close" type="button" aria-label="Close project details">x</button>
+        <button class="icon-btn" id="modal-close" type="button" aria-label="Close project details">×</button>
       </header>
       <div class="modal-body">
         <section class="gallery" aria-label="Project gallery">
-          <button class="gallery-btn prev" id="slide-prev" type="button" aria-label="Previous image">&lt;</button>
+          <button class="gallery-btn prev" id="slide-prev" type="button" aria-label="Previous image">←</button>
           <div class="gallery-stage" id="modal-gallery"></div>
-          <button class="gallery-btn next" id="slide-next" type="button" aria-label="Next image">&gt;</button>
+          <button class="gallery-btn next" id="slide-next" type="button" aria-label="Next image">→</button>
         </section>
         <aside class="modal-details">
           <div class="stat-row" id="modal-stats"></div>
           <h3>What I built</h3>
           <ul id="modal-details"></ul>
-          <h3>Tech</h3>
+          <h3>Tools</h3>
           <div class="tag-row" id="modal-tags"></div>
           <div class="modal-links" id="modal-links"></div>
         </aside>
@@ -118,6 +97,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=20260606-mobile-header"></script>
+  <script src="script.js?v=20260621-2"></script>
 </body>
 </html>

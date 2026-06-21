@@ -3,201 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Om Patel is a UofT Electrical Engineering student building embedded systems, automation infrastructure, hardware prototypes, and applied ML projects." />
-  <meta property="og:title" content="Om Patel | Hardware and Software Engineer" />
-  <meta property="og:description" content="Recruiter-friendly engineering portfolio with featured hardware, software, embedded, and ML projects." />
+  <meta name="description" content="Om Patel is an electrical engineering student building reliable software, embedded systems, and hardware prototypes." />
+  <meta property="og:title" content="Om Patel | Electrical Engineer" />
+  <meta property="og:description" content="Software, embedded systems, electronics, and applied machine learning." />
   <meta property="og:type" content="website" />
-  <title>Om Patel | Engineering Portfolio</title>
-  <link rel="preload" as="font" href="fonts/JetBrainsMono[wght].woff2" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20260606-featured-row" />
+  <title>Om Patel | Electrical Engineer</title>
+  <link rel="preload" as="font" href="fonts/JetBrainsMono-Regular.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=20260621-2" />
 </head>
 <body data-page="home">
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Om Patel home">
-      <span class="brand-mark">OP</span>
-      <span>Om Patel</span>
-    </a>
-    <div class="header-callout">
-      <span>Seeking Fall 2026 internships (4-12mo)</span>
-      <a href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener">Reach Out!</a>
-    </div>
+    <a class="brand" href="index.html" aria-label="Om Patel home">Om Patel</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
       <span class="svg-icon icon-distribute-vertical" aria-hidden="true"></span>
     </button>
     <nav class="site-nav" aria-label="Primary navigation">
+      <a class="nav-projects" href="projects.html">Projects <span aria-hidden="true">↗</span></a>
       <a href="#experience">Experience</a>
-      <a href="projects.html">Projects</a>
       <a href="#resume">Resume</a>
-      <div class="nav-menu">
-        <button class="nav-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">Contact</button>
-        <div class="nav-menu-panel" aria-label="Contact links">
-          <a class="nav-icon-link" href="mailto:omprakash.patel@mail.utoronto.ca" aria-label="Email">
-            <span class="svg-icon icon-email" aria-hidden="true"></span>
-          </a>
-          <a class="nav-icon-link" href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <span class="svg-icon icon-linkedin" aria-hidden="true"></span>
-          </a>
-        </div>
-      </div>
+      <a class="nav-contact" href="mailto:omprakash.patel@mail.utoronto.ca">Contact</a>
     </nav>
   </header>
 
   <main>
-    <section id="home" class="hero section-shell reveal">
-      <div class="hero-top">
-        <div class="hero-intro">
-          <p class="eyebrow">UofT Electrical Engineering + PEY Co-op</p>
-          <h1>hello there! i'm <span class="name-accent">om</span>.</h1>
-          <p class="hero-text">
-            I'm a third year electrical engineering student with a passion for hardware, electronics, embedded systems, automation and breaking stuff! <span aria-hidden="true">&#9889;</span>
-          </p>
+    <section class="hero reveal" id="home">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow light">Electrical engineering · University of Toronto</p>
+        <h1>I build systems that work beyond the prototype.</h1>
+        <p class="hero-text">Software automation, embedded hardware, and applied machine learning.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#work">View selected work</a>
+          <a class="text-link light-link" href="statics/resume/Om_Patel_ResumeSW.pdf" target="_blank" rel="noopener">Open resume <span aria-hidden="true">↗</span></a>
         </div>
-        <figure class="memoji-card">
-          <img src="statics/self_memoji.png" alt="Om memoji" loading="eager">
-        </figure>
       </div>
-      <div id="featured" class="hero-featured">
-        <div class="featured-head">
-          <p class="eyebrow">Selected projects</p>
-          <a class="text-link" href="projects.html">See all projects</a>
-        </div>
-        <div class="featured-grid banner-stack" id="featured-projects" aria-live="polite"></div>
+      <div class="hero-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Available for Fall 2026 internships</span>
       </div>
-      <a class="scroll-cue" href="#experience">
-        <span>Scroll down</span>
-        <span class="svg-icon icon-scroll" aria-hidden="true"></span>
-      </a>
     </section>
 
-    <section id="experience" class="section-shell reveal">
-      <div class="section-head compact">
-        <p class="eyebrow">Professional background</p>
-        <h2>Experience</h2>
+    <section id="work" class="section-shell reveal">
+      <div class="section-intro">
+        <p class="eyebrow">Selected work</p>
+        <h2>Built, tested, shipped.</h2>
+        <a class="text-link" href="projects.html">View all projects <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="featured-list" id="featured-projects" aria-live="polite"></div>
+    </section>
+
+    <section id="experience" class="section-shell section-rule reveal">
+      <div class="section-intro">
+        <p class="eyebrow">Experience</p>
+        <h2>Engineering in production.</h2>
       </div>
       <div class="experience-list">
         <article class="experience-item">
-          <div>
-            <h3>Software / Automation Engineer Intern</h3>
-            <p>Relay Financial | May 2026 - Present</p>
-            <div class="tag-row experience-tags" aria-label="Relay technology stack">
-              <span class="tag">TypeScript</span>
-              <span class="tag">Playwright</span>
-              <span class="tag">Cursor</span>
-              <span class="tag">Datadog</span>
-              <span class="tag">AWS</span>
-              <span class="tag">Automation</span>
+          <div class="experience-company">
+            <img src="statics/company_logos/Relay_logo.png" alt="Relay Financial">
+            <div>
+              <p>Relay Financial</p>
+              <span>Fintech startup</span>
             </div>
           </div>
-          <ul>
-            <li>Built CI/CD infrastructure for mobile deployments, improving release reliability across engineering workflows.</li>
-            <li>Owned and maintained 50+ core banking tests covering deposits, accounts, and critical product flows.</li>
-          </ul>
+          <div class="experience-meta">
+            <p>2026 — Present</p>
+          </div>
+          <div class="experience-copy">
+            <h3>Quality & Automation Engineer Intern</h3>
+            <p>Cut test-suite runtime by <strong>42%</strong> in a <strong>100+ deploys/week</strong> environment while expanding core banking coverage to <strong>50+ maintained tests</strong>.</p>
+          </div>
+          <p class="experience-tech">TypeScript · Playwright · Bruno · GitHub Actions · PostgreSQL · AWS · Datadog</p>
         </article>
         <article class="experience-item">
-          <div>
-            <h3>Software Tester Intern</h3>
-            <p>FNZ | May 2025 - Aug 2025</p>
-            <div class="tag-row experience-tags" aria-label="FNZ technology stack">
-              <span class="tag">Cypress</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Automation</span>
+          <div class="experience-company">
+            <img src="statics/company_logos/FNZ_logo.png" alt="FNZ">
+            <div>
+              <p>FNZ</p>
+              <span>Fintech</span>
             </div>
           </div>
-          <ul>
-            <li>Automated 45+ test cases and helped reduce the retest backlog by 50%.</li>
-            <li>Executed 3x weekly regression/integration cycles and supported market data feed mapping into database workflows.</li>
-          </ul>
+          <div class="experience-meta">
+            <p>2025</p>
+          </div>
+          <div class="experience-copy">
+            <h3>Analyst Software Tester Intern</h3>
+            <p>Cut the pending retest backlog by <strong>50%+</strong> by identifying <strong>30+ platform bugs</strong> and validating <strong>75+ fixes</strong> across staging and user-test environments.</p>
+          </div>
+          <p class="experience-tech">Cypress · JavaScript · SQL · RabbitMQ · Postman · XML · API logs · JIRA</p>
         </article>
         <article class="experience-item">
-          <div>
-            <h3>Data Analyst and Administrative Assistant</h3>
-            <p>UofT Engineering Career Centre | May 2024 - Aug 2024</p>
-            <div class="tag-row experience-tags" aria-label="Analyst technology stack">
-              <span class="tag">Excel</span>
+          <div class="experience-company">
+            <img src="statics/company_logos/UofT_logo.png" alt="University of Toronto">
+            <div>
+              <p>UofT Engineering</p>
+              <span>Career Centre</span>
             </div>
           </div>
-          <ul>
-            <li>Analyzed 1,200+ survey responses and presented service insights to 15+ staff members.</li>
-            <li>Built recruitment trend reports from 2,000+ student records and automated inbox routing with Power Automate.</li>
-          </ul>
+          <div class="experience-meta">
+            <p>2024</p>
+          </div>
+          <div class="experience-copy">
+            <h3>Data Analyst & Administrative Assistant</h3>
+            <p>Analyzed <strong>1,200+ survey responses</strong> and <strong>2,000+ student records</strong> to surface PEY Co-op service and recruitment trends.</p>
+          </div>
+          <p class="experience-tech">Excel · Power Automate · Data analysis · Reporting · Presentation</p>
         </article>
       </div>
     </section>
 
-    <section id="skills" class="section-shell reveal">
-      <div class="section-head compact">
-        <h2>Toolbox</h2>
+    <section id="capabilities" class="section-shell section-rule reveal">
+      <div class="section-intro">
+        <p class="eyebrow">Capabilities</p>
+        <h2>Across the stack and onto the bench.</h2>
       </div>
-      <div class="skill-groups">
+      <div class="capability-list">
         <article>
-          <span class="skill-icon">SW</span>
-          <h3>Software, testing and ML</h3>
-          <ul class="skill-list">
-            <li><strong>Languages</strong><span>Python, C/C++, JavaScript, SQL, MATLAB</span></li>
-            <li><strong>Automation and QA</strong><span>CI/CD, regression suites, Postman, SQL validation, Git</span></li>
-            <li><strong>ML and data</strong><span>PyTorch, CNNs, computer vision, data augmentation, model evaluation</span></li>
-          </ul>
+          <span>01</span>
+          <h3>Software & automation</h3>
+          <p>Python, C/C++, TypeScript, CI/CD, Playwright, Cypress, SQL, PyTorch</p>
         </article>
         <article>
-          <span class="skill-icon">HW</span>
-          <h3>Embedded and electronics</h3>
-          <ul class="skill-list">
-            <li><strong>Microcontrollers</strong><span>Arduino UNO R3/Q, ESP32, STM32, GPS modules, WiFi</span></li>
-            <li><strong>Circuits and PCB</strong><span>Altium Designer, KiCad, LTspice, soldering, board bring-up</span></li>
-            <li><strong>Controls and sensing</strong><span>Servo control, motor drivers, sensor integration, oscilloscope debugging</span></li>
-          </ul>
+          <span>02</span>
+          <h3>Embedded systems</h3>
+          <p>ESP32, STM32, Arduino, sensors, wireless communication, motor control</p>
         </article>
         <article>
-          <span class="skill-icon">FP</span>
-          <h3>Digital hardware systems</h3>
-          <ul class="skill-list">
-            <li><strong>FPGA platforms</strong><span>DE1-SoC, VGA display, PS/2 keyboard, audio synthesis</span></li>
-            <li><strong>HDL and tools</strong><span>Verilog FSMs, ModelSim testbenches, Intel Quartus</span></li>
-            <li><strong>System design</strong><span>Frame buffers, input handling, game-state logic, hardware/software boundaries</span></li>
-          </ul>
+          <span>03</span>
+          <h3>Electronics & FPGA</h3>
+          <p>Altium, KiCad, LTspice, Verilog, DE1-SoC, board bring-up, lab validation</p>
         </article>
       </div>
     </section>
 
-    <section id="resume" class="section-shell reveal">
-      <div class="section-head compact">
+    <section id="resume" class="section-shell section-rule reveal">
+      <div class="section-intro">
         <p class="eyebrow">Resume</p>
-        <h2>Choose your version</h2>
-        <p>Transcript available upon request.</p>
+        <h2>Choose the relevant version.</h2>
       </div>
-      <div class="resume-grid">
-        <article class="resume-card">
-          <img src="statics/resume/Om_Patel_ResumeSW.png" alt="Software resume preview" loading="lazy">
-          <div>
-            <h3>Software resume</h3>
-            <p>Automation, testing, applied ML, data, and software project focus.</p>
-            <a class="btn small" href="statics/resume/Om_Patel_ResumeSW.pdf" target="_blank" rel="noopener">Open PDF</a>
-          </div>
-        </article>
-        <article class="resume-card">
-          <img src="statics/resume/Om_Patel_ResumeHW.png" alt="Hardware resume preview" loading="lazy">
-          <div>
-            <h3>Hardware resume</h3>
-            <p>Embedded systems, circuit design, FPGA, PCB, and hardware project focus.</p>
-            <a class="btn small" href="statics/resume/Om_Patel_ResumeHW.pdf" target="_blank" rel="noopener">Open PDF</a>
-          </div>
-        </article>
+      <div class="resume-list">
+        <a href="statics/resume/Om_Patel_ResumeSW.pdf" target="_blank" rel="noopener">
+          <span>Software & automation</span>
+          <span>PDF ↗</span>
+        </a>
+        <a href="statics/resume/Om_Patel_ResumeHW.pdf" target="_blank" rel="noopener">
+          <span>Hardware & embedded systems</span>
+          <span>PDF ↗</span>
+        </a>
       </div>
+    </section>
+
+    <section class="contact-section reveal">
+      <p class="eyebrow light">Start a conversation</p>
+      <h2>Have a problem worth building?</h2>
+      <a href="mailto:omprakash.patel@mail.utoronto.ca">omprakash.patel@mail.utoronto.ca <span aria-hidden="true">↗</span></a>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Om Patel</p>
+    <p>© 2026 Om Patel</p>
     <div class="footer-socials">
-      <a class="social-link" href="mailto:omprakash.patel@mail.utoronto.ca" aria-label="Email">
-        <span class="svg-icon icon-email" aria-hidden="true"></span>
-      </a>
-      <a class="social-link" href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <span class="svg-icon icon-linkedin" aria-hidden="true"></span>
-      </a>
-      <a class="social-link" href="https://github.com/OP-Patel" target="_blank" rel="noopener" aria-label="GitHub">
-        <span class="svg-icon icon-github" aria-hidden="true"></span>
-      </a>
+      <a href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/OP-Patel" target="_blank" rel="noopener">GitHub</a>
     </div>
   </footer>
 
@@ -209,19 +177,19 @@
           <h2 id="modal-title"></h2>
           <p id="modal-summary"></p>
         </div>
-        <button class="icon-btn" id="modal-close" type="button" aria-label="Close project details">x</button>
+        <button class="icon-btn" id="modal-close" type="button" aria-label="Close project details">×</button>
       </header>
       <div class="modal-body">
         <section class="gallery" aria-label="Project gallery">
-          <button class="gallery-btn prev" id="slide-prev" type="button" aria-label="Previous image">&lt;</button>
+          <button class="gallery-btn prev" id="slide-prev" type="button" aria-label="Previous image">←</button>
           <div class="gallery-stage" id="modal-gallery"></div>
-          <button class="gallery-btn next" id="slide-next" type="button" aria-label="Next image">&gt;</button>
+          <button class="gallery-btn next" id="slide-next" type="button" aria-label="Next image">→</button>
         </section>
         <aside class="modal-details">
           <div class="stat-row" id="modal-stats"></div>
           <h3>What I built</h3>
           <ul id="modal-details"></ul>
-          <h3>Tech</h3>
+          <h3>Tools</h3>
           <div class="tag-row" id="modal-tags"></div>
           <div class="modal-links" id="modal-links"></div>
         </aside>
@@ -229,6 +197,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=20260606-mobile-header"></script>
+  <script src="script.js?v=20260621-2"></script>
 </body>
 </html>
