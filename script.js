@@ -4,6 +4,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const projects = [
     {
+      id: "arty-conv-accelerator",
+      title: "Real-Time FPGA Vision Accelerator",
+      type: "FPGA Computer Vision",
+      summary: "CPU-free Arty A7 vision pipeline with live camera capture, Sobel processing, and custom UDP transport.",
+      description: "Built an end-to-end real-time vision accelerator on the Digilent Arty A7-100T. Custom SystemVerilog configures and captures an OV7670 camera, converts RGB565 frames to fixed-point grayscale, computes Sobel edges, and streams CRC-validated pixels over a custom Ethernet/IPv4/UDP stack to a Python and Streamlit operator console.",
+      stats: ["5.739× vs OpenCV", "81,380 frames/s", "9,000 zero-error live frames"],
+      featureOrder: 2,
+      featureOutcome: "81,380 frames/s · 5.739× OpenCV · 9,000 validated live frames",
+      featureFocus: "center 48%",
+      categories: ["FPGA", "Python", "Embedded"],
+      tags: ["SystemVerilog", "FPGA", "Arty A7-100T", "Computer Vision", "OV7670", "Sobel Filter", "Ethernet/UDP", "Clock Domain Crossing", "Python", "OpenCV", "Streamlit", "Vivado"],
+      details: [
+        "Built the camera-to-host path in SystemVerilog: OV7670 capture, fixed-point grayscale/Sobel, CDC, and custom Ethernet/UDP.",
+        "Ran 32 Sobel lanes at 200 MHz: 81,380 frames/s, 5.739× single-thread OpenCV throughput, and a bit-exact CRC.",
+        "Validated 9,000 live frames across 7.5/15/30 FPS modes with zero integrity errors and clean routed timing."
+      ],
+      images: [
+        "statics/arty-conv-accelerator/hardware-setup.png",
+        "statics/arty-conv-accelerator/reference-sobel-dashboard.png",
+        "statics/arty-conv-accelerator/thresholded-sobel-dashboard.png",
+        "statics/arty-conv-accelerator/live-sobel.png",
+        "statics/arty-conv-accelerator/accelerator-showcase.png"
+      ],
+      links: [
+        { label: "GitHub", url: "https://github.com/OP-Patel/cv-accelerator" },
+        { label: "Watch demo", url: "https://youtu.be/zik1mwUIBYg" }
+      ],
+      featured: true,
+      year: 2026,
+      impact: 1
+    },
+    {
+      id: "optical-dsp",
+      title: "FPGA Optical DSP",
+      type: "FPGA Optical Communications",
+      status: "Coming Soon",
+      summary: "Arty A7 optical-link prototype with XADC receive DSP and FPGA-resident BER measurement.",
+      description: "Planning and hardware bring-up for a student-scale optical communications link on the Arty A7-100T. The design will transmit NRZ on-off keying through a short 650 nm laser path, sample a BPW34-style photodiode with the XADC, and run fixed-point receive DSP with FPGA-resident bit-error-rate measurement.",
+      stats: ["Planning + bring-up", "650 nm OOK link", "XADC receive DSP"],
+      categories: ["FPGA", "Embedded"],
+      tags: ["FPGA", "Arty A7-100T", "Optical Communications", "XADC", "NRZ/OOK", "Fixed-Point DSP", "FIR Filter", "PRBS/BER", "SystemVerilog", "Vivado"],
+      details: [
+        "Plan a deterministic NRZ/OOK transmitter and short 650 nm optical path with transistor-switched laser drive.",
+        "Sample a BPW34-style photodiode through the Arty XADC for DC removal, FIR filtering, phase selection, and threshold decisions.",
+        "Qualify 1 kbit/s first, target 10 kbit/s, and report BER only after physical hardware evidence passes."
+      ],
+      images: [
+        "statics/optical-dsp/coming-soon.svg"
+      ],
+      links: [
+        { label: "GitHub", url: "https://github.com/OP-Patel/optical-dsp" }
+      ],
+      featured: false,
+      year: 2026,
+      impact: 2
+    },
+    {
       id: "land-use-classification",
       title: "Land-Use Classification Model",
       type: "Deep Learning",
@@ -37,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
       summary: "Sub-100 ms fall-detection system with dual-sensor fusion and WiFi.",
       description: "Co-engineered a Top 20-nominated fall-detection system using ESP32, ESP8266, and STM32 hardware. Dual-sensor fusion from a BNO055 IMU and DPS310 barometer achieved under 100 ms end-to-end latency at a 9-10 Hz packet rate.",
       stats: ["<100 ms latency", "9-10 Hz packets", "Top 20 ECE342"],
-      featureOrder: 3,
+      featureOrder: 4,
       featureMetric: "Nominated <span class='metric-accent'>Top 20 Project</span> in ECE342 - Computer Hardware",
       featureTags: ["Embedded System", "ESP32", "STM32", "WiFi"],
       featureOutcome: "Top 20 ECE342 · Wireless communication · STM32 wearable tech",
@@ -100,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
       summary: "Arduino UNO Q navigation and SOS system with live GPS breadcrumbs.",
       description: "Engineered a portable navigation and SOS system on Arduino UNO Q with GNSS/GPS, OLED, and GSM/LTE hardware. Live coordinates and breadcrumbs were sent to a Streamlit dashboard with Twilio, Google Maps, and Gemini integrations.",
       stats: ["Winner among 260+ submissions", "Best Use of Arduino UNO Q", "GPS + LTE"],
-      featureOrder: 2,
+      featureOrder: 3,
       featureMetric: "MakeUofT Hardware Hackathon 2026: <span class='metric-accent'>Winner</span> for Best Use of Arduino UNO Q",
       featureTags: ["Arduino UNO Q", "GPS", "Python", "Streamlit"],
       featureFocus: "center 44%",
@@ -161,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
       summary: "DE1-SoC memory game with VGA, audio, and PS/2 input.",
       description: "Recreated a Human Benchmark-style memory game on a DE1-SoC FPGA using Embedded C and low-level device control. The project coordinates VGA drawing, PS/2 keyboard input, audio feedback, buffering, and difficulty progression.",
       stats: ["DE1-SoC", "VGA + PS/2", "Audio synthesis"],
-      categories: ["C/C++", "Embedded"],
+      categories: ["FPGA", "C/C++", "Embedded"],
       tags: ["FPGA", "DE1-SoC", "Embedded C", "VGA", "PS/2 Keyboard", "Audio", "Frame Buffers"],
       details: [
         "Programmed memory-mapped DE1-SoC peripherals in Embedded C for VGA rendering, PS/2 keyboard input, and synthesized audio feedback.",
@@ -186,16 +243,16 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "gomoku",
       title: "FPGA Gomoku",
-      type: "FPGA Verilog",
-      summary: "Verilog Gomoku game with VGA display, PS/2 input, and testbenches.",
-      description: "Built a playable Gomoku implementation on FPGA using Verilog finite state machines, VGA display logic, PS/2 input handling, and ModelSim testbenches for game-ending scenarios.",
-      stats: ["Verilog FSMs", "ModelSim testbenches", "VGA gameplay"],
-      categories: ["Verilog"],
-      tags: ["FPGA", "Verilog", "ModelSim", "VGA", "PS/2 Keyboard", "Finite State Machines", "Digital Logic"],
+      type: "DE1-SoC Game System",
+      summary: "Interactive FPGA board game with VGA graphics, PS/2 keyboard control, and hardware win detection.",
+      description: "Built a playable Gomoku system on the DE1-SoC using Verilog. Custom logic renders the board, hover cursor, pieces, and game-over screen over VGA, decodes PS/2 keyboard input, tracks the 13×13 board in on-chip memory, and detects horizontal, vertical, and diagonal wins in hardware.",
+      stats: ["DE1-SoC", "160×120 VGA graphics", "PS/2 keyboard control"],
+      categories: ["FPGA", "Embedded"],
+      tags: ["DE1-SoC", "VGA Graphics", "PS/2 Keyboard", "On-Chip Game State", "FPGA", "Verilog", "Finite State Machines", "Quartus"],
       details: [
-        "Designed Verilog finite-state machines for turn control, cursor movement, stone placement, win detection, and display state transitions.",
-        "Integrated VGA rendering and PS/2 keyboard input as separate hardware modules around the core game controller.",
-        "Verified game-ending paths and edge cases with ModelSim testbenches before FPGA deployment."
+        "Rendered the board, hover cursor, player pieces, backgrounds, and game-over screen through a 160×120 VGA pipeline.",
+        "Decoded PS/2 make/break codes for WASD movement and Enter-based placement on the DE1-SoC.",
+        "Stored a 13×13 board in hardware and detected five-in-a-row across horizontal, vertical, and diagonal paths."
       ],
       images: [
         "statics/gomoku/demo.png",
@@ -310,7 +367,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const featured = projects
       .filter((project) => project.featured)
       .sort((a, b) => (a.featureOrder || 99) - (b.featureOrder || 99))
-      .slice(0, 3);
+      .slice(0, 4);
     grid.innerHTML = featured.map((project) => `
       <button class="feature-row" type="button" data-project-id="${project.id}">
         <span class="feature-media">
@@ -342,7 +399,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!list || !filters || !search || !sort || !clear || !count) return;
 
     const filterCategories = [
-      "STM32", "Arduino", "Python", "C/C++", "Verilog", "PCB", "AI/ML", "Embedded", "Sensors"
+      "FPGA", "STM32", "Arduino", "Python", "C/C++", "PCB", "AI/ML", "Embedded", "Sensors"
     ];
     const selected = new Set();
 
@@ -414,12 +471,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       list.innerHTML = results.map((project) => `
-        <article class="project-card" data-project-id="${project.id}" role="button" tabindex="0" aria-label="View ${project.title} details">
+        <article class="project-card${project.status ? " coming-soon" : ""}" data-project-id="${project.id}" role="button" tabindex="0" aria-label="View ${project.title} details">
           <div class="project-thumb">
             <img src="${project.images[0]}" alt="${project.title} preview" loading="lazy">
           </div>
           <div class="project-card-body">
-            <span class="project-type">${project.type}</span>
+            <div class="project-kicker">
+              <span class="project-type">${project.type}</span>
+              ${project.status ? `<span class="project-state">${project.status}</span>` : ""}
+            </div>
             <h3>${project.title}</h3>
             <p>${project.summary}</p>
             <span class="project-stat">${project.stats.join(" | ")}</span>
@@ -487,7 +547,7 @@ document.addEventListener("DOMContentLoaded", () => {
     activeProject = project;
     activeSlide = 0;
 
-    qs("#modal-type").textContent = project.type;
+    qs("#modal-type").textContent = project.status ? `${project.type} · ${project.status}` : project.type;
     qs("#modal-title").textContent = project.title;
     qs("#modal-summary").textContent = project.description;
     qs("#modal-stats").innerHTML = project.stats.map((item) => `<span class="stat-pill">${item}</span>`).join("");
@@ -533,9 +593,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function projectLink(link) {
     const isGitHub = link.label.toLowerCase().includes("github");
-    const label = isGitHub
-      ? `<span class="svg-icon icon-github" aria-hidden="true"></span><span class="sr-only">${link.label}</span>`
-      : `<span>${link.label}</span><span class="svg-icon icon-external" aria-hidden="true"></span>`;
+    const icon = isGitHub
+      ? `<svg class="link-icon" aria-hidden="true" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>`
+      : `<svg class="link-icon" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg>`;
+    const label = `<span>${link.label}</span>${icon}`;
 
     return `<a class="btn small project-link-btn" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}">${label}</a>`;
   }

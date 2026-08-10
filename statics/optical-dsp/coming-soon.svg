@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title description">
+  <title id="title">FPGA Optical DSP coming soon</title>
+  <desc id="description">A dark technical illustration of an orange optical beam crossing a sampled waveform.</desc>
+  <rect width="1600" height="1000" fill="#111210"/>
+  <g stroke="#2b2e2a" stroke-width="2" opacity="0.9">
+    <path d="M0 125h1600M0 250h1600M0 375h1600M0 500h1600M0 625h1600M0 750h1600M0 875h1600"/>
+    <path d="M200 0v1000M400 0v1000M600 0v1000M800 0v1000M1000 0v1000M1200 0v1000M1400 0v1000"/>
+  </g>
+  <g fill="none" stroke="#f2f0ea" stroke-width="9" stroke-linejoin="round" opacity="0.92">
+    <path d="M80 650h150V430h150v220h150V430h150v220h150V430h150v220h150V430h150v220h150"/>
+  </g>
+  <path d="M80 540h1440" stroke="#e7643a" stroke-width="10"/>
+  <path d="M1465 504l55 36-55 36z" fill="#e7643a"/>
+  <g fill="#e7643a">
+    <circle cx="230" cy="540" r="15"/><circle cx="530" cy="540" r="15"/><circle cx="830" cy="540" r="15"/><circle cx="1130" cy="540" r="15"/><circle cx="1430" cy="540" r="15"/>
+  </g>
+  <g font-family="JetBrains Mono, monospace" letter-spacing="7">
+    <text x="82" y="112" fill="#e7643a" font-size="28" font-weight="700">CURRENTLY BUILDING / 01</text>
+    <text x="80" y="850" fill="#faf9f5" font-size="78" font-weight="700" letter-spacing="-3">FPGA OPTICAL DSP</text>
+    <text x="83" y="914" fill="#9d9f98" font-size="27">ARTY A7 / XADC / NRZ OOK / FIXED-POINT RECEIVE PATH</text>
+    <text x="1255" y="112" fill="#faf9f5" font-size="24">COMING SOON</text>
+  </g>
+</svg>
