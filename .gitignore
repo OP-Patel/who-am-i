@@ -11,6 +11,9 @@
 *.sln.docstates
 *.env
 
+# Local agent tooling and installed skills
+.agents/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-09T22:05:22.8088095-04:00",
+  "title": "Design System: Om Patel Engineering Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "burnt-signal-orange": {
+        "role": "primary",
+        "displayName": "Burnt Signal Orange",
+        "canonical": "#e7643a",
+        "tonalRamp": ["oklch(18% 0.07 40)", "oklch(28% 0.10 40)", "oklch(40% 0.13 40)", "oklch(52% 0.15 40)", "oklch(64% 0.16 40)", "oklch(74% 0.13 40)", "oklch(85% 0.08 40)", "oklch(95% 0.025 40)"]
+      },
+      "drafting-paper": {
+        "role": "neutral",
+        "displayName": "Drafting Paper",
+        "canonical": "#f2f0ea",
+        "tonalRamp": ["oklch(15% 0.008 90)", "oklch(28% 0.008 90)", "oklch(42% 0.008 90)", "oklch(56% 0.008 90)", "oklch(69% 0.008 90)", "oklch(80% 0.008 90)", "oklch(89% 0.008 90)", "oklch(95% 0.008 90)"]
+      },
+      "warm-white": {
+        "role": "neutral",
+        "displayName": "Warm White",
+        "canonical": "#faf9f5",
+        "tonalRamp": ["oklch(15% 0.006 90)", "oklch(28% 0.006 90)", "oklch(42% 0.006 90)", "oklch(56% 0.006 90)", "oklch(69% 0.006 90)", "oklch(80% 0.006 90)", "oklch(90% 0.006 90)", "oklch(98% 0.006 90)"]
+      },
+      "carbon-ink": {
+        "role": "neutral",
+        "displayName": "Carbon Ink",
+        "canonical": "#111210",
+        "tonalRamp": ["oklch(15% 0.006 120)", "oklch(27% 0.006 120)", "oklch(40% 0.006 120)", "oklch(53% 0.006 120)", "oklch(66% 0.006 120)", "oklch(77% 0.006 120)", "oklch(87% 0.006 120)", "oklch(95% 0.006 120)"]
+      },
+      "instrument-gray": {
+        "role": "neutral",
+        "displayName": "Instrument Gray",
+        "canonical": "#666860",
+        "tonalRamp": ["oklch(15% 0.012 120)", "oklch(28% 0.012 120)", "oklch(41% 0.012 120)", "oklch(54% 0.012 120)", "oklch(66% 0.012 120)", "oklch(78% 0.012 120)", "oklch(88% 0.012 120)", "oklch(95% 0.012 120)"]
+      },
+      "rule-gray": {
+        "role": "neutral",
+        "displayName": "Rule Gray",
+        "canonical": "#cbc9c0",
+        "tonalRamp": ["oklch(15% 0.01 90)", "oklch(28% 0.01 90)", "oklch(41% 0.01 90)", "oklch(54% 0.01 90)", "oklch(66% 0.01 90)", "oklch(77% 0.01 90)", "oklch(84% 0.01 90)", "oklch(95% 0.01 90)"]
+      },
+      "control-room-black": {
+        "role": "neutral",
+        "displayName": "Control Room Black",
+        "canonical": "#171916",
+        "tonalRamp": ["oklch(15% 0.008 120)", "oklch(28% 0.008 120)", "oklch(41% 0.008 120)", "oklch(54% 0.008 120)", "oklch(66% 0.008 120)", "oklch(78% 0.008 120)", "oklch(88% 0.008 120)", "oklch(95% 0.008 120)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero statements only." },
+      "headline": { "displayName": "Headline", "purpose": "Section and collection introductions." },
+      "body": { "displayName": "Body", "purpose": "Narrative descriptions and evidence summaries." },
+      "label": { "displayName": "Instrument Label", "purpose": "Metrics, project types, dates, and system status." }
+    },
+    "shadows": [
+      { "name": "navigation-signal", "value": "0 8px 28px rgba(231, 100, 58, .24)", "purpose": "Priority glow for the Projects navigation control." },
+      { "name": "modal-overlay", "value": "0 30px 90px rgba(0, 0, 0, .3)", "purpose": "Structural depth for the project-detail layer." }
+    ],
+    "motion": [
+      { "name": "state-fast", "value": "180ms ease", "purpose": "Buttons, links, chips, and directional affordances." },
+      { "name": "image-settle", "value": "500ms cubic-bezier(.2,.7,.2,1)", "purpose": "Restrained project-image scale on hover." },
+      { "name": "ticker-loop", "value": "30s linear infinite", "purpose": "Continuous current-work status ribbon." }
+    ],
+    "breakpoints": [
+      { "name": "intermediate", "value": "900px" },
+      { "name": "mobile", "value": "680px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Hero Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Squared high-contrast action used over hero photography.",
+      "html": "<button class=\"ds-btn-primary\">VIEW SELECTED WORK</button>",
+      "css": ".ds-btn-primary { min-height: 46px; padding: 0 18px; border: 1px solid var(--white); border-radius: 0; background: var(--white); color: var(--ink); font: 800 .85rem Arial, sans-serif; transition: background 180ms ease, color 180ms ease, transform 180ms ease; } .ds-btn-primary:hover { border-color: var(--accent); background: var(--accent); color: var(--white); transform: translateY(-2px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }"
+    },
+    {
+      "name": "Technical Text Link",
+      "kind": "button",
+      "description": "Bold text action with a compact directional cue.",
+      "html": "<a class=\"ds-text-link\" href=\"#\">OPEN RESUME <span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-text-link { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); font: 800 .85rem Arial, sans-serif; text-decoration: none; } .ds-text-link span { transition: transform 180ms ease; } .ds-text-link:hover span { transform: translate(2px, -2px); } .ds-text-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "Squared technology filter with a decisive inverted selected state.",
+      "html": "<button class=\"ds-filter-chip\">FPGA</button>",
+      "css": ".ds-filter-chip { min-height: 34px; padding: 0 12px; border: 1px solid var(--line); border-radius: 0; background: transparent; color: var(--ink); font: 700 .74rem Arial, sans-serif; transition: background 180ms ease, color 180ms ease, border-color 180ms ease; } .ds-filter-chip:hover, .ds-filter-chip[aria-pressed=\"true\"] { border-color: var(--ink); background: var(--ink); color: var(--white); } .ds-filter-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Underline Search Field",
+      "kind": "input",
+      "description": "Transparent search input grounded by one structural rule.",
+      "html": "<label class=\"ds-field\"><span>SEARCH PROJECTS</span><input placeholder=\"FPGA, PYTHON, SENSORS...\"></label>",
+      "css": ".ds-field { display: grid; gap: 9px; color: var(--muted); font: 700 .72rem Arial, sans-serif; } .ds-field input { width: 100%; height: 48px; padding: 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; outline: 0; background: transparent; color: var(--ink); font: 1rem Arial, sans-serif; } .ds-field input:focus { border-color: var(--accent); } .ds-field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }"
+    },
+    {
+      "name": "Evidence Project Card",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "Flat project surface where media and measured outcomes carry the hierarchy.",
+      "html": "<article class=\"ds-project-card\"><div class=\"ds-project-media\"></div><div class=\"ds-project-copy\"><span>FPGA COMPUTER VISION</span><h3>REAL-TIME VISION ACCELERATOR</h3><p>81,380 frames/s · 5.739× OpenCV</p></div></article>",
+      "css": ".ds-project-card { display: grid; border: 1px solid var(--line); border-radius: 0; background: var(--paper); color: var(--ink); overflow: hidden; } .ds-project-media { aspect-ratio: 16 / 10; background: var(--dark); } .ds-project-copy { display: grid; gap: 11px; padding: 26px; } .ds-project-copy span { color: var(--accent); font: 700 .68rem 'JetBrains Mono', monospace; letter-spacing: .05em; } .ds-project-copy h3, .ds-project-copy p { margin: 0; } .ds-project-copy h3 { font: 800 1.6rem/1.05 Arial, sans-serif; letter-spacing: -.04em; } .ds-project-copy p { color: var(--muted); font: .78rem 'JetBrains Mono', monospace; } .ds-project-card:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Projects Navigation Signal",
+      "kind": "nav",
+      "description": "The only filled navigation action, used to make the work collection immediately reachable.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">PROJECTS ↗</a><a href=\"#\">EXPERIENCE</a><a href=\"#\">RESUME</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 30px; font: 700 .84rem Arial, sans-serif; } .ds-nav a { color: var(--ink); text-decoration: none; } .ds-nav a:first-child { padding: 10px 16px; background: var(--accent); color: var(--white); box-shadow: 0 8px 28px rgba(231,100,58,.24); } .ds-nav a:hover { opacity: .6; } .ds-nav a:first-child:hover { opacity: 1; transform: translateY(-1px); } .ds-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }"
+    },
+    {
+      "name": "Current-Work Ribbon",
+      "kind": "custom",
+      "description": "Narrow status band that repeats the active FPGA build without competing with project evidence.",
+      "html": "<div class=\"ds-ticker\"><span>COMING SOON</span><i></i><span>ARTY A7 / FPGA OPTICAL DSP</span><i></i></div>",
+      "css": ".ds-ticker { min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 28px; padding: 0 24px; background: var(--accent); color: var(--white); font: 700 .68rem 'JetBrains Mono', monospace; letter-spacing: .04em; } .ds-ticker i { width: 6px; height: 6px; border: 1px solid currentColor; transform: rotate(45deg); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Instrumented Field Notes",
+    "overview": "The portfolio combines the clarity of engineering field notes with the quiet situational awareness of a control room. Real photographs, implementation screenshots, diagrams, measurements, and technical labels are the visual authority. The interface frames that evidence with a warm editorial canvas, firm typographic hierarchy, squared controls, and compact mono metadata. The system should feel precise and confident while retaining the physical, experimental character of student engineering work.",
+    "keyCharacteristics": [
+      "Evidence-led imagery and measurable project outcomes.",
+      "Large editorial headlines paired with compact mono annotations.",
+      "Warm paper neutrals, carbon text, and one controlled orange signal.",
+      "Flat, rule-based structure with tactile interaction feedback.",
+      "Dense enough to communicate technical range without becoming dashboard-like."
+    ],
+    "rules": [
+      { "name": "The Signal Rarity Rule", "body": "Burnt Signal Orange marks state, category, or action; it does not become a decorative background except for the narrow current-work ribbon.", "section": "colors" },
+      { "name": "The Warm Neutral Rule", "body": "Use the established warm neutrals instead of pure white, blue-gray, or generic dashboard surfaces.", "section": "colors" },
+      { "name": "The Two-Voice Rule", "body": "Sans-serif carries narrative and hierarchy; mono carries evidence and instrumentation. Do not set paragraphs or major headlines in mono.", "section": "typography" },
+      { "name": "The Flat-at-Rest Rule", "body": "Static content remains flat; shadows appear only when an element is genuinely layered or actively prioritized.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do lead with real project media, implementation screenshots, and measured outcomes.",
+      "Do use thin rules, grid alignment, and warm tonal shifts to organize information.",
+      "Do keep system labels short, uppercase, and mono while narrative copy stays in sans-serif.",
+      "Do make hover, focus, active, and modal states decisive and accessible.",
+      "Do preserve the honest status of unfinished work."
+    ],
+    "donts": [
+      "Don't turn the site into a generic SaaS landing page with rounded card stacks, gradients, or feature-pill clutter.",
+      "Don't imitate cyberpunk dashboards with glowing telemetry, faux terminals, scan lines, or decorative HUD overlays.",
+      "Don't reduce the portfolio to a sparse résumé template that hides project artifacts and technical evidence.",
+      "Don't use Burnt Signal Orange as ambient decoration or flood large content surfaces with it.",
+      "Don't add promotional claims, fabricated metrics, or visual treatments that imply unfinished work is complete."
+    ]
+  }
+}

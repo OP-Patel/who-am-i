@@ -23,7 +23,7 @@
   <link rel="canonical" href="https://op-patel.github.io/who-am-i/projects.html" />
   <title>Projects | Om Patel</title>
   <link rel="preload" as="font" href="fonts/JetBrainsMono-Regular.woff2" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20260809-2" />
+  <link rel="stylesheet" href="style.css?v=20260809-9" />
 </head>
 <body data-page="projects">
   <header class="site-header solid-header">
@@ -32,7 +32,7 @@
       <span class="svg-icon icon-distribute-vertical" aria-hidden="true"></span>
     </button>
     <nav class="site-nav" aria-label="Primary navigation">
-      <a class="nav-projects" href="projects.html" aria-current="page">Projects <span aria-hidden="true">↗</span></a>
+      <a class="nav-projects" href="projects.html" aria-current="page">Projects <span class="svg-icon icon-external" aria-hidden="true"></span></a>
       <a href="index.html#experience-list">Experience</a>
       <a href="index.html#resume">Resume</a>
       <a class="nav-contact" href="mailto:omprakash.patel@mail.utoronto.ca">Contact</a>
@@ -40,7 +40,7 @@
   </header>
 
   <main>
-    <section class="projects-hero section-shell reveal">
+    <section class="projects-hero section-shell">
       <div>
         <p class="eyebrow">Project archive</p>
         <h1>Things I’ve built.</h1>
@@ -83,7 +83,7 @@
     </div>
   </footer>
 
-  <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-summary">
     <div class="modal-card">
       <header class="modal-header">
         <div>
@@ -91,13 +91,13 @@
           <h2 id="modal-title"></h2>
           <p id="modal-summary"></p>
         </div>
-        <button class="icon-btn" id="modal-close" type="button" aria-label="Close project details">×</button>
+        <button class="icon-btn" id="modal-close" type="button" aria-label="Close project details"><svg class="control-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
       </header>
       <div class="modal-body">
         <section class="gallery" aria-label="Project gallery">
-          <button class="gallery-btn prev" id="slide-prev" type="button" aria-label="Previous image">←</button>
+          <button class="gallery-btn prev" id="slide-prev" type="button" aria-label="Previous image"><svg class="control-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m15 18-6-6 6-6" /></svg></button>
           <div class="gallery-stage" id="modal-gallery"></div>
-          <button class="gallery-btn next" id="slide-next" type="button" aria-label="Next image">→</button>
+          <button class="gallery-btn next" id="slide-next" type="button" aria-label="Next image"><svg class="control-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" /></svg></button>
         </section>
         <aside class="modal-details">
           <div class="stat-row" id="modal-stats"></div>
@@ -111,6 +111,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=20260809-2"></script>
+  <script src="script.js?v=20260809-6"></script>
 </body>
 </html>

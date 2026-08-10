@@ -298,9 +298,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let activeProject = null;
   let activeSlide = 0;
+  let modalOpener = null;
 
   initNavigation();
-  initReveal();
   initFeaturedProjects();
   initProjectBrowser();
   initProjectModal();
@@ -344,22 +344,6 @@ document.addEventListener("DOMContentLoaded", () => {
     qs(".nav-menu-trigger", menu)?.setAttribute("aria-expanded", "false");
   }
 
-  function initReveal() {
-    const items = qsa(".reveal");
-    if (!items.length) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    items.forEach((item) => observer.observe(item));
-  }
-
   function initFeaturedProjects() {
     const grid = qs("#featured-projects");
     if (!grid) return;
@@ -379,13 +363,13 @@ document.addEventListener("DOMContentLoaded", () => {
             <h3>${project.title}</h3>
             <span class="feature-outcome">${project.featureOutcome || project.stats.slice(0, 2).join(" · ")}</span>
           </span>
-          <span class="feature-arrow" aria-hidden="true">↗</span>
+          <span class="feature-arrow" aria-hidden="true"><span class="svg-icon icon-external"></span></span>
         </span>
       </button>
     `).join("");
 
     qsa("[data-project-id]", grid).forEach((tile) => {
-      tile.addEventListener("click", () => openProject(tile.dataset.projectId));
+      tile.addEventListener("click", () => openProject(tile.dataset.projectId, tile));
     });
   }
 
@@ -493,11 +477,11 @@ document.addEventListener("DOMContentLoaded", () => {
       `).join("");
 
       qsa(".project-card", list).forEach((card) => {
-        card.addEventListener("click", () => openProject(card.dataset.projectId));
+        card.addEventListener("click", () => openProject(card.dataset.projectId, card));
         card.addEventListener("keydown", (event) => {
           if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            openProject(card.dataset.projectId);
+            openProject(card.dataset.projectId, card);
           }
         });
       });
@@ -511,7 +495,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function sortProjects(items, mode) {
     const sorted = [...items];
     if (mode === "recent") {
-      return sorted.sort((a, b) => b.year - a.year || a.impact - b.impact);
+      return sorted.sort((a, b) => {
+        const comingSoonPriority = Number(b.status === "Coming Soon") - Number(a.status === "Coming Soon");
+        return comingSoonPriority || b.year - a.year || a.impact - b.impact;
+      });
     }
     if (mode === "name") {
       return sorted.sort((a, b) => a.title.localeCompare(b.title));
@@ -536,16 +523,18 @@ document.addEventListener("DOMContentLoaded", () => {
       if (event.key === "Escape") closeProject();
       if (event.key === "ArrowLeft") moveSlide(-1);
       if (event.key === "ArrowRight") moveSlide(1);
+      if (event.key === "Tab") trapModalFocus(event, modal);
     });
   }
 
-  function openProject(projectId) {
+  function openProject(projectId, opener = null) {
     const project = projects.find((item) => item.id === projectId);
     const modal = qs("#project-modal");
     if (!project || !modal) return;
 
     activeProject = project;
     activeSlide = 0;
+    modalOpener = opener;
 
     qs("#modal-type").textContent = project.status ? `${project.type} · ${project.status}` : project.type;
     qs("#modal-title").textContent = project.title;
@@ -567,6 +556,22 @@ document.addEventListener("DOMContentLoaded", () => {
     qs("#modal-close")?.focus();
   }
 
+  function trapModalFocus(event, modal) {
+    const focusable = qsa('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])', modal)
+      .filter((element) => element.getClientRects().length > 0);
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   function closeProject() {
     const modal = qs("#project-modal");
     if (!modal) return;
@@ -575,6 +580,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("modal-open");
     activeProject = null;
     activeSlide = 0;
+    modalOpener?.focus();
+    modalOpener = null;
   }
 
   function moveSlide(delta) {
