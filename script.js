@@ -301,6 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let modalOpener = null;
 
   initNavigation();
+  initResumeDock();
   initFeaturedProjects();
   initProjectBrowser();
   initProjectModal();
@@ -342,6 +343,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeContactMenu(menu) {
     menu.classList.remove("open");
     qs(".nav-menu-trigger", menu)?.setAttribute("aria-expanded", "false");
+  }
+
+  function initResumeDock() {
+    const dock = qs(".resume-dock");
+    const hero = qs(".hero");
+    if (!dock || !hero) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      dock.classList.toggle("is-visible", !entry.isIntersecting);
+    }, { rootMargin: "-76px 0px 0px", threshold: 0.05 });
+
+    observer.observe(hero);
   }
 
   function initFeaturedProjects() {

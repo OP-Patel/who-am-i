@@ -23,7 +23,7 @@
   <link rel="canonical" href="https://ompatel.ca/" />
   <title>Om Patel | Electrical Engineer</title>
   <link rel="preload" as="font" href="fonts/JetBrainsMono-Regular.woff2" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20260809-9" />
+  <link rel="stylesheet" href="style.css?v=20260817-1" />
 </head>
 <body data-page="home">
   <header class="site-header">
@@ -33,8 +33,8 @@
     </button>
     <nav class="site-nav" aria-label="Primary navigation">
       <a class="nav-projects" href="projects.html">Projects <span class="svg-icon icon-external" aria-hidden="true"></span></a>
+      <a class="nav-resume" href="statics/resume/Om_Patel_Resume.pdf" target="_blank" rel="noopener">Resume <span class="svg-icon icon-external" aria-hidden="true"></span></a>
       <a href="#experience-list">Experience</a>
-      <a href="#resume">Resume</a>
       <a class="nav-contact" href="mailto:omprakash.patel@mail.utoronto.ca">Contact</a>
     </nav>
   </header>
@@ -48,8 +48,8 @@
         <h1>I build across software and hardware.</h1>
         <p class="hero-text">Software automation, FPGA systems, embedded hardware, and applied machine learning.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="#work">View selected work</a>
-          <a class="text-link light-link" href="statics/resume/Om_Patel_ResumeSW.pdf" target="_blank" rel="noopener">Open resume <span class="svg-icon icon-external" aria-hidden="true"></span></a>
+          <a class="btn primary" href="statics/resume/Om_Patel_Resume.pdf" target="_blank" rel="noopener">Open Resume <span class="svg-icon icon-external" aria-hidden="true"></span></a>
+          <a class="text-link light-link" href="#work">View selected work</a>
         </div>
       </div>
       <div class="hero-status">
@@ -107,9 +107,9 @@
           </div>
           <div class="experience-copy">
             <h3>Quality & Automation Engineer Intern</h3>
-            <p>Cut test-suite runtime by <strong>42%</strong> in a <strong>100+ deploys/week</strong> environment while expanding core banking coverage to <strong>50+ maintained tests</strong>.</p>
+            <p>Raised core payments test coverage from <strong>0% to 51.2%</strong> by leading integration-test and CI/CD infrastructure, built company-wide Cursor Cloud Agent automation, and expanded core banking automation to <strong>265+ maintained tests</strong> while cutting Playwright runtime by <strong>42%</strong>.</p>
           </div>
-          <p class="experience-tech">TypeScript · Playwright · Bruno · GitHub Actions · PostgreSQL · AWS · Datadog</p>
+          <p class="experience-tech">Playwright · GitHub Actions · Docker · AWS · Cursor Cloud Agents · API/UI/Lambda automation · CI/CD</p>
         </article>
         <article class="experience-item">
           <div class="experience-company">
@@ -124,16 +124,16 @@
           </div>
           <div class="experience-copy">
             <h3>Analyst Software Tester Intern</h3>
-            <p>Cut the pending retest backlog by <strong>50%+</strong> by identifying <strong>30+ platform bugs</strong> and validating <strong>75+ fixes</strong> across staging and user-test environments.</p>
+            <p>Reduced the pending retest backlog by <strong>50%+</strong> by identifying <strong>30+ platform bugs</strong> and validating <strong>75+ fixes</strong>, improved regression accuracy by <strong>18%</strong> across <strong>45+ Cypress tests</strong> and <strong>10+ end-to-end workflows</strong>, and authored <strong>6+ technical design documents</strong>.</p>
           </div>
-          <p class="experience-tech">Cypress · JavaScript · SQL · RabbitMQ · Postman · XML · API logs · JIRA</p>
+          <p class="experience-tech">Cypress · JavaScript · SQL · RabbitMQ · API logs · Postman · Bloomberg · Morningstar · Technical design</p>
         </article>
         <article class="experience-item">
           <div class="experience-company">
             <img src="statics/company_logos/UofT_logo.png" alt="University of Toronto">
             <div>
-              <p>UofT Engineering</p>
-              <span>Career Centre</span>
+              <p>University of Toronto</p>
+              <span>Engineering Career Centre</span>
             </div>
           </div>
           <div class="experience-meta">
@@ -141,11 +141,25 @@
           </div>
           <div class="experience-copy">
             <h3>Data Analyst & Administrative Assistant</h3>
-            <p>Analyzed <strong>1,200+ survey responses</strong> and <strong>2,000+ student records</strong> to surface PEY Co-op service and recruitment trends.</p>
+            <p>Presented PEY Co-op insights and improvement steps to <strong>15+ staff</strong> after analyzing <strong>1,200+ survey responses</strong>, then produced Annual and Seasonal Recruitment Reports from <strong>2,000+ student records</strong>.</p>
           </div>
-          <p class="experience-tech">Excel · Power Automate · Data analysis · Reporting · Presentation</p>
+          <p class="experience-tech">Excel · Survey analysis · Recruitment reporting · Stakeholder presentation</p>
         </article>
       </div>
+    </section>
+
+    <section id="resume" class="resume-section section-shell section-rule">
+      <div class="resume-heading">
+        <h2>Resume</h2>
+        <p>A focused overview of my hardware, FPGA, embedded systems, electronics, and production engineering experience.</p>
+      </div>
+      <a class="resume-feature" href="statics/resume/Om_Patel_Resume.pdf" target="_blank" rel="noopener">
+        <span class="resume-feature-copy">
+          <strong>Om_Patel_Resume</strong>
+          <span>Embedded · FPGA · Hardware · Automation</span>
+        </span>
+        <span class="resume-action">Open PDF <span class="svg-icon icon-external" aria-hidden="true"></span></span>
+      </a>
     </section>
 
     <section id="capabilities" class="section-shell section-rule">
@@ -216,23 +230,6 @@
       </div>
     </section>
 
-    <section id="resume" class="section-shell section-rule">
-      <div class="section-intro">
-        <p class="eyebrow">Resume</p>
-        <h2>Choose the relevant version.</h2>
-      </div>
-      <div class="resume-list">
-        <a href="statics/resume/Om_Patel_ResumeSW.pdf" target="_blank" rel="noopener">
-          <span>Software & automation</span>
-          <span class="resume-action">PDF <span class="svg-icon icon-external" aria-hidden="true"></span></span>
-        </a>
-        <a href="statics/resume/Om_Patel_ResumeHW.pdf" target="_blank" rel="noopener">
-          <span>Hardware & embedded systems</span>
-          <span class="resume-action">PDF <span class="svg-icon icon-external" aria-hidden="true"></span></span>
-        </a>
-      </div>
-    </section>
-
     <section class="contact-section">
       <p class="eyebrow light">Start a conversation</p>
       <h2>Let’s talk engineering.</h2>
@@ -247,6 +244,11 @@
       <a href="https://github.com/OP-Patel" target="_blank" rel="noopener">GitHub</a>
     </div>
   </footer>
+
+  <a class="resume-dock" href="statics/resume/Om_Patel_Resume.pdf" target="_blank" rel="noopener" aria-label="Open Om Patel's Resume PDF">
+    <span>Resume</span>
+    <span class="svg-icon icon-external" aria-hidden="true"></span>
+  </a>
 
   <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-summary">
     <div class="modal-card">
@@ -276,6 +278,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=20260809-6"></script>
+  <script src="script.js?v=20260817-1"></script>
 </body>
 </html>
