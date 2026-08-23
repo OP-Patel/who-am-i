@@ -22,17 +22,22 @@
   <meta name="twitter:image:alt" content="Om Patel presenting the WearAlert embedded systems project" />
   <link rel="canonical" href="https://ompatel.ca/" />
   <title>Om Patel | Electrical Engineer</title>
+  <script>
+    if (window.location.pathname.endsWith("/index.html")) {
+      window.history.replaceState(null, "", window.location.pathname.replace(/index\.html$/, "") + window.location.search + window.location.hash);
+    }
+  </script>
   <link rel="preload" as="font" href="fonts/JetBrainsMono-Regular.woff2" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css?v=20260817-1" />
 </head>
 <body data-page="home">
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Om Patel home">Om Patel</a>
+    <a class="brand" href="/" aria-label="Om Patel home">Om Patel</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
       <span class="svg-icon icon-distribute-vertical" aria-hidden="true"></span>
     </button>
     <nav class="site-nav" aria-label="Primary navigation">
-      <a class="nav-projects" href="projects.html">Projects <span class="svg-icon icon-external" aria-hidden="true"></span></a>
+      <a class="nav-projects" href="/projects/">Projects <span class="svg-icon icon-external" aria-hidden="true"></span></a>
       <a class="nav-resume" href="statics/resume/Om_Patel_Resume.pdf" target="_blank" rel="noopener">Resume <span class="svg-icon icon-external" aria-hidden="true"></span></a>
       <a href="#experience-list">Experience</a>
       <a class="nav-contact" href="mailto:omprakash.patel@mail.utoronto.ca">Contact</a>
@@ -83,7 +88,7 @@
       <div class="section-intro">
         <p class="eyebrow">Selected work</p>
         <h2>Designed, built, tested.</h2>
-        <a class="text-link" href="projects.html">View all projects <span class="svg-icon icon-external" aria-hidden="true"></span></a>
+        <a class="text-link" href="/projects/">View all projects <span class="svg-icon icon-external" aria-hidden="true"></span></a>
       </div>
       <div class="featured-list" id="featured-projects" aria-live="polite"></div>
     </section>

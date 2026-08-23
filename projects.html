@@ -3,119 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Engineering projects by Om Patel across software, embedded systems, FPGA, PCB design, and machine learning." />
-  <meta property="og:title" content="Projects | Om Patel" />
-  <meta property="og:description" content="Software, embedded systems, FPGA, PCB, and machine learning projects." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ompatel.ca/projects.html" />
-  <meta property="og:site_name" content="Om Patel" />
-  <meta property="og:image" content="https://ompatel.ca/statics/deepLearningProject/confusionAndExample.png" />
-  <meta property="og:image:secure_url" content="https://ompatel.ca/statics/deepLearningProject/confusionAndExample.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="2140" />
-  <meta property="og:image:height" content="924" />
-  <meta property="og:image:alt" content="Land-use classification confusion matrix and prediction examples" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Projects | Om Patel" />
-  <meta name="twitter:description" content="Software, embedded systems, FPGA, PCB, and machine learning projects." />
-  <meta name="twitter:image" content="https://ompatel.ca/statics/deepLearningProject/confusionAndExample.png" />
-  <meta name="twitter:image:alt" content="Land-use classification confusion matrix and prediction examples" />
-  <link rel="canonical" href="https://ompatel.ca/projects.html" />
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="refresh" content="0; url=/projects/" />
+  <link rel="canonical" href="https://ompatel.ca/projects/" />
   <title>Projects | Om Patel</title>
-  <link rel="preload" as="font" href="fonts/JetBrainsMono-Regular.woff2" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20260817-1" />
+  <script>
+    window.location.replace("/projects/" + window.location.search + window.location.hash);
+  </script>
 </head>
-<body data-page="projects">
-  <header class="site-header solid-header">
-    <a class="brand" href="index.html" aria-label="Om Patel home">Om Patel</a>
-    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-      <span class="svg-icon icon-distribute-vertical" aria-hidden="true"></span>
-    </button>
-    <nav class="site-nav" aria-label="Primary navigation">
-      <a class="nav-projects" href="projects.html" aria-current="page">Projects <span class="svg-icon icon-external" aria-hidden="true"></span></a>
-      <a class="nav-resume" href="statics/resume/Om_Patel_Resume.pdf" target="_blank" rel="noopener">Resume <span class="svg-icon icon-external" aria-hidden="true"></span></a>
-      <a href="index.html#experience-list">Experience</a>
-      <a class="nav-contact" href="mailto:omprakash.patel@mail.utoronto.ca">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="projects-hero section-shell">
-      <div>
-        <p class="eyebrow">Project archive</p>
-        <h1>Things I’ve built.</h1>
-      </div>
-      <p>Ten projects across software, embedded systems, digital hardware, and electronics.</p>
-    </section>
-
-    <section class="project-browser section-shell">
-      <div class="browser-controls">
-        <label class="search-box">
-          <span>Search projects</span>
-          <input id="project-search" type="search" placeholder="Search by project or technology" autocomplete="off" />
-        </label>
-        <label class="sort-box">
-          <span>Sort by</span>
-          <select id="project-sort">
-            <option value="impact">Featured</option>
-            <option value="recent">Newest</option>
-            <option value="name">Name</option>
-          </select>
-        </label>
-      </div>
-      <div class="filter-shell">
-        <div class="filter-head">
-          <span>Filter</span>
-          <button class="text-button" id="clear-filters" type="button">Reset</button>
-        </div>
-        <div class="filter-chips" id="project-filters" aria-label="Project filters"></div>
-      </div>
-      <p class="result-count" id="result-count"></p>
-      <div class="project-list" id="project-list" aria-live="polite"></div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>© 2026 Om Patel</p>
-    <div class="footer-socials">
-      <a href="https://www.linkedin.com/in/om-patel-op" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/OP-Patel" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </footer>
-
-  <a class="resume-dock" href="statics/resume/Om_Patel_Resume.pdf" target="_blank" rel="noopener" aria-label="Open Om Patel's Resume PDF">
-    <span>Resume</span>
-    <span class="svg-icon icon-external" aria-hidden="true"></span>
-  </a>
-
-  <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-summary">
-    <div class="modal-card">
-      <header class="modal-header">
-        <div>
-          <p class="eyebrow" id="modal-type"></p>
-          <h2 id="modal-title"></h2>
-          <p id="modal-summary"></p>
-        </div>
-        <button class="icon-btn" id="modal-close" type="button" aria-label="Close project details"><svg class="control-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
-      </header>
-      <div class="modal-body">
-        <section class="gallery" aria-label="Project gallery">
-          <button class="gallery-btn prev" id="slide-prev" type="button" aria-label="Previous image"><svg class="control-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m15 18-6-6 6-6" /></svg></button>
-          <div class="gallery-stage" id="modal-gallery"></div>
-          <button class="gallery-btn next" id="slide-next" type="button" aria-label="Next image"><svg class="control-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" /></svg></button>
-        </section>
-        <aside class="modal-details">
-          <div class="stat-row" id="modal-stats"></div>
-          <h3>What I built</h3>
-          <ul id="modal-details"></ul>
-          <h3>Tools</h3>
-          <div class="tag-row" id="modal-tags"></div>
-          <div class="modal-links" id="modal-links"></div>
-        </aside>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js?v=20260817-1"></script>
+<body>
+  <p>This page has moved to <a href="/projects/">ompatel.ca/projects/</a>.</p>
 </body>
 </html>
