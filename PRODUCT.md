@@ -44,7 +44,7 @@ Visitors typically arrive from an application, resume, LinkedIn profile, or shar
 - Project images, screenshots, diagrams, reports, and resume files are stored under `statics/`.
 - Existing project cards link to available GitHub repositories, Devpost submissions, demonstrations, and reports.
 - Internship dates, roles, technologies, and quantified outcomes are presented in `index.html`.
-- The FPGA Optical DSP project is explicitly marked Coming Soon and must not be presented as completed work until supported by physical evidence.
+- The FPGA Optical DSP project is complete at functional prototype scope, with a 10-minute hardware qualification run, measured BER, timing closure, and physical capture evidence available in the project repository.
 
 ## Product Principles
 

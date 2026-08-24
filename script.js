@@ -37,28 +37,46 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: "optical-dsp",
-      title: "FPGA Optical DSP",
-      type: "FPGA Optical Communications",
-      status: "Coming Soon",
-      summary: "Arty A7 optical-link prototype with XADC receive DSP and FPGA-resident BER measurement.",
-      description: "Planning and hardware bring-up for a student-scale optical communications link on the Arty A7-100T. The design will transmit NRZ on-off keying through a short 650 nm laser path, sample a BPW34-style photodiode with the XADC, and run fixed-point receive DSP with FPGA-resident bit-error-rate measurement.",
-      stats: ["Planning + bring-up", "650 nm OOK link", "XADC receive DSP"],
-      categories: ["FPGA", "Embedded"],
-      tags: ["FPGA", "Arty A7-100T", "Optical Communications", "XADC", "NRZ/OOK", "Fixed-Point DSP", "FIR Filter", "PRBS/BER", "SystemVerilog", "Vivado"],
+      title: "Arty A7 Optical DSP",
+      type: "Optical Communications / FPGA",
+      status: "Completed",
+      summary: "Short-range optical link with FPGA receive DSP, host telemetry, and measured end-to-end BER.",
+      description: "Built and qualified a short-range 650 nm optical communications prototype on the Arty A7-100T. A deterministic NRZ/OOK stream crosses a KY-008 laser link, a BPW34-style photodiode feeds the XADC, and fixed-point FPGA DSP handles DC removal, FIR filtering, calibration, decisions, framing, and PRBS-15 BER measurement.",
+      stats: ["0.03364% BER", "5.63M payload bits", "10 kbit/s", "100 MHz timing met"],
+      featureOrder: 1,
+      featureLabel: "Most recent · Completed Aug 2026",
+      featureOutcome: "0.03364% BER · 5.63M payload bits · 10-minute qualification run",
+      featureFocus: "center 58%",
+      categories: ["FPGA", "Python", "Embedded", "Sensors"],
+      tags: ["SystemVerilog", "FPGA", "Arty A7-100T", "Optical Communications", "XADC", "NRZ/OOK", "Fixed-Point DSP", "16-Tap FIR", "PRBS-15 / BER", "UART", "Python", "Vivado"],
       details: [
-        "Plan a deterministic NRZ/OOK transmitter and short 650 nm optical path with transistor-switched laser drive.",
-        "Sample a BPW34-style photodiode through the Arty XADC for DC removal, FIR filtering, phase selection, and threshold decisions.",
-        "Qualify 1 kbit/s first, target 10 kbit/s, and report BER only after physical hardware evidence passes."
+        "Qualified 5,632,936 payload bits over 604.9 seconds at 10 kbit/s with 1,895 errors: 0.03364% BER, below the predeclared 0.05% target.",
+        "Built the receive path in SystemVerilog: XADC capture, DC removal, a 16-tap FIR, phase and threshold calibration, bit decisions, frame sync, and PRBS-15 checking.",
+        "Streamed coherent counters and link state over USB UART to a Python CLI, telemetry monitor, and evidence logger; the final run recorded zero UART, packet, or signal-path faults.",
+        "Closed the 100 MHz Vivado build with +0.600 ns setup slack, +0.023 ns hold slack, and zero DRC errors. The prototype still shows alignment-sensitive lock losses, so it is presented as a functional link rather than a zero-error instrument."
       ],
       images: [
-        "statics/optical-dsp/coming-soon.svg"
+        "statics/optical-dsp/normal-light-pic.JPG",
+        "statics/optical-dsp/optical-dsp-cover.svg",
+        "statics/optical-dsp/setup-pic.png",
+        "statics/optical-dsp/physical-captures.png",
+        "statics/optical-dsp/optical-framer-waveform.png",
+        "statics/optical-dsp/prbs15-waveform.png"
+      ],
+      imageAlts: [
+        "Complete benchtop optical link with the Arty A7 FPGA board, laser path, and photodiode receiver",
+        "Optical DSP qualification cover showing BER, payload bit count, and signal path",
+        "Low-light close-up of the illuminated laser module and photodiode breadboard beside the Arty A7",
+        "Measured raw, centered, filtered, and beam-blocked photodiode captures from the physical optical link",
+        "Vivado simulation of optical framer field transitions and symbol-enable behavior",
+        "Vivado simulation of PRBS-15 seed, advance, and injected error detection"
       ],
       links: [
         { label: "GitHub", url: "https://github.com/OP-Patel/optical-dsp" }
       ],
-      featured: false,
+      featured: true,
       year: 2026,
-      impact: 2
+      impact: 0
     },
     {
       id: "land-use-classification",
@@ -125,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
       summary: "Sensor-driven smart bin with automated capacity checks and recyclability lookup.",
       description: "Built a smart recycling bin using Arduino UNO R3, ultrasonic and IR sensors, servo actuation, Gemini AI, and OpenFoodFacts. The project won Best Sustainability Hack and Best Domain Name at MakeUofT 2025.",
       stats: ["Best Sustainability Hack", "Best Domain Name", "2x hackathon winner"],
-      featureOrder: 1,
+      featureOrder: 5,
       featureMetric: "Winner: Best Sustainability Hack + Best Domain Name",
       featureTags: ["Python", "Arduino UNO R3", "Streamlit", "Servo Control"],
       featureFocus: "center 48%",
@@ -305,6 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFeaturedProjects();
   initProjectBrowser();
   initProjectModal();
+  initProjectSpotlights();
 
   function initNavigation() {
     const toggle = qs(".nav-toggle");
@@ -369,6 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <button class="feature-row" type="button" data-project-id="${project.id}">
         <span class="feature-media">
           <img src="${project.images[0]}" alt="${project.title} preview" loading="lazy" style="object-position: ${project.featureFocus || "center center"}">
+          ${project.featureLabel ? `<span class="feature-label">${project.featureLabel}</span>` : ""}
         </span>
         <span class="feature-copy">
           <span class="feature-copy-main">
@@ -383,6 +403,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     qsa("[data-project-id]", grid).forEach((tile) => {
       tile.addEventListener("click", () => openProject(tile.dataset.projectId, tile));
+    });
+  }
+
+  function initProjectSpotlights() {
+    qsa("[data-project-trigger]").forEach((trigger) => {
+      trigger.addEventListener("click", () => openProject(trigger.dataset.projectTrigger, trigger));
     });
   }
 
@@ -468,9 +494,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       list.innerHTML = results.map((project) => `
-        <article class="project-card${project.status ? " coming-soon" : ""}" data-project-id="${project.id}" role="button" tabindex="0" aria-label="View ${project.title} details">
+        <article class="project-card${project.status ? " has-state" : ""}" data-project-id="${project.id}" role="button" tabindex="0" aria-label="View ${project.title} details">
           <div class="project-thumb">
-            <img src="${project.images[0]}" alt="${project.title} preview" loading="lazy">
+            <img src="${project.images[0]}" alt="${project.title} preview" loading="lazy" style="object-position: ${project.featureFocus || "center center"}">
           </div>
           <div class="project-card-body">
             <div class="project-kicker">
@@ -509,8 +535,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sorted = [...items];
     if (mode === "recent") {
       return sorted.sort((a, b) => {
-        const comingSoonPriority = Number(b.status === "Coming Soon") - Number(a.status === "Coming Soon");
-        return comingSoonPriority || b.year - a.year || a.impact - b.impact;
+        return b.year - a.year || a.impact - b.impact;
       });
     }
     if (mode === "name") {
@@ -560,7 +585,7 @@ document.addEventListener("DOMContentLoaded", () => {
       : projectLink({ label: "GitHub profile", url: "https://github.com/OP-Patel" });
 
     qs("#modal-gallery").innerHTML = project.images.map((src, index) => `
-      <img src="${src}" alt="${project.title} image ${index + 1}" class="${index === 0 ? "active" : ""}" loading="lazy">
+      <img src="${src}" alt="${project.imageAlts?.[index] || `${project.title} image ${index + 1}`}" class="${index === 0 ? "active" : ""}" loading="lazy">
     `).join("");
 
     modal.classList.add("open");

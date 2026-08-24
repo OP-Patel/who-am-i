@@ -296,13 +296,20 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); line-height: 1.15; }
 @keyframes hero-settle { from { transform: scale(1.09); } to { transform: scale(1.03); } }
 
 .current-ticker {
+  width: 100%;
   min-height: 42px;
   display: flex;
   align-items: center;
+  padding: 0;
   overflow: hidden;
+  border: 0;
   background: var(--accent);
   color: var(--white);
+  font: inherit;
+  text-align: left;
   text-decoration: none;
+  appearance: none;
+  cursor: pointer;
 }
 .ticker-track {
   flex: 0 0 auto;
@@ -382,6 +389,7 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); line-height: 1.15; }
   cursor: pointer;
 }
 .feature-media {
+  position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #ddd;
@@ -391,6 +399,19 @@ h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); line-height: 1.15; }
   height: 100%;
   object-fit: cover;
   transition: transform 500ms cubic-bezier(.2,.7,.2,1), filter 250ms ease;
+}
+.feature-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 7px 9px;
+  background: rgba(17,18,16,.92);
+  color: var(--white);
+  font-family: "JetBrains Mono", monospace;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
 }
 .feature-copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: end; }
 .feature-copy-main { display: grid; gap: 13px; }
@@ -714,7 +735,6 @@ body.modal-open .resume-dock.is-visible {
   letter-spacing: .04em;
   text-transform: uppercase;
 }
-.project-card.coming-soon .project-thumb { background: var(--dark); }
 .project-card-body h3 { font-size: clamp(1.35rem, 2.2vw, 2rem); }
 .project-card-body p { margin: 0; color: var(--muted); }
 .project-stat { color: var(--ink); font-family: "JetBrains Mono", monospace; font-size: .68rem; }
